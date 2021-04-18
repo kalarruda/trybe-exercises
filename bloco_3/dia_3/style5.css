@@ -2,7 +2,7 @@ ol {
     background-color: yellow;
 }
 
-li:nth-child(2n){
+ol li:nth-child(2n){
     color: green;
     font-weight: bold;
 }
@@ -37,12 +37,47 @@ li[textarea="Java"]{
     background-color: pink;
 }
 
-li a:hover:nth-of-type(1){
+.programas li:nth-child(1) a:hover{
     color: orange;
     font-weight: bold;
 }
 
-li a:hover:nth-of-type(2){
+.programas li:nth-child(2) a:hover{
     color: green;
     font-weight: bold;
 }
+
+.programas li:nth-child(3) a:hover{
+    color: black;
+    font-weight: bold;
+}
+
+.programas li:nth-child(4) a:hover{
+    color: yellow;
+    font-weight: bold;
+}
+
+.programas li:nth-child(5) a:hover{
+    color: green;
+    font-weight: bold;
+}
+
+/* a:hover{
+    font-weight: bold;
+}
+
+.laranja:hover{
+    color: orange;
+}
+
+.verde:hover{
+  color: green;
+}
+
+.programas .preta:hover{
+    color: black;
+}
+
+.amarela:hover{
+    color: yellow;
+} */
