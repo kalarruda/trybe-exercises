@@ -1,0 +1,160 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+
+font-family: 'Lato', sans-serif;
+}
+
+.cabecalho{
+    margin-left: 50px;
+    margin-top: 20px;
+    color: #948d2b;
+}
+
+.cabecalho h1{
+    font-weight:bolder;
+    font-size: 50px;
+    position: fixed;
+    width: 100%;
+    padding: 5px;
+    top: -10px;
+    z-index: 1;
+    background-color: white;
+}
+
+.navegador{
+    background-color: #948d2b;
+    padding: 15px;
+    margin: 20px 0 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 40px;
+    z-index: 1;
+}
+
+.navegador ul li{
+    display: inline-block;
+    margin-left: 50px;
+    font-weight: bold;
+    font-size: 30px;  
+    
+}
+
+.navegador a{
+    text-decoration: none;
+    color: white;
+    transition: 0.2s all;
+   
+}
+
+.navegador a:hover{
+    color: #504c11;
+    font-weight: bolder;
+}
+
+main{
+    margin-top: 140px;
+}
+
+.artigo{
+    /* margin-left: 50px; */
+    display: inline-block;
+    text-align: center;
+}
+
+.artigo p{
+    margin: 30px auto ;
+    font-size: 30px;
+}
+
+h2{
+ font-size: 3em;
+ margin-bottom: 20px;
+ margin-top: 20px;
+ color: #948d2b;
+}
+
+p{
+ width: 70%;
+ margin-top: 20px;
+ font-size: 20px;
+ margin-left: 50px;
+}
+
+.artigo em {
+    font-weight: bold;
+}
+
+.tabela{
+    display: inline-block;
+    /* padding: 15px 0 15px 80px ; */
+    margin-bottom: 50px;
+    font-size: 30px;
+    background-color: #948d2b;
+    
+}
+
+/* table{
+    border: #948d2b solid 30px;
+} */
+
+.tabela{
+    border-spacing: 0px;
+    /* para não ter separação entre as tr's */
+}
+
+.tabela tr:nth-child(+2n-1){
+    background-color: #7e771e;
+}
+
+.tabela td{
+    padding: 10px 25px; 
+    margin-left: 20px;
+}
+
+.imagens{
+    width: 800px;
+    border-radius: 10px;
+}
+
+.referencias a{
+    font-size: 30px;
+    color: #948d2b;;
+    font-weight: 800;
+    transition: 0.3s all;
+    text-decoration-line: none;
+}
+
+.referencias a:hover{
+    color: black;
+    font-weight: bolder;
+}
+
+.referencias li{
+    margin: 10px 30px 20px 30px;
+    display: inline-block;
+}
+
+h3{
+    font-size: 2em;
+    color: #504c11;
+}
+
+
+.rodape{       
+    padding: 10px;      
+    color: white;
+    background-color: #948d2b;
+}
+
+.rodape p{   
+    text-align: center;
+    font-size: 22px;
+    width: 100%;
+    margin-left: 0;
+    padding-bottom: 10px;  
+    font-weight: bolder;
+}
