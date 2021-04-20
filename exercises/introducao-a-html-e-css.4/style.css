@@ -88,6 +88,16 @@ p{
     font-weight: bold;
 }
 
+.video {
+    text-decoration: none;
+    color:#948d2b;
+    font-weight: bolder;
+}
+
+.video:hover{
+    color: black;
+}
+
 .tabela{
     display: inline-block;
     /* padding: 15px 0 15px 80px ; */
