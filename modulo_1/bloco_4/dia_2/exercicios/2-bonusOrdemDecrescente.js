@@ -14,3 +14,4 @@ for (let valor1 = 1; valor1 < numbers.length; valor1 += 1) {
   };
 
   console.log(numbers)
+  
