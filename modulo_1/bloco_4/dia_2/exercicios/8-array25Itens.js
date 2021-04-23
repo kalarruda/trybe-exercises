@@ -4,14 +4,15 @@
 // let lista =[];
 
 // for (let n=1 ; n<=25 ; n +=1){   
+//     // lista = n;
 //     lista = valor.push(n);
-//     console.log(lista);
+//     console.log(valor);
 // }
 
 let valor=[];
 
 for (let n=1 ; n<=25 ; n +=1){   
     valor.push(n);
-}
-
+   
+};
 console.log(valor);
