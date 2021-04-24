@@ -17,15 +17,16 @@ for (totaisJogos = 0 ; totaisJogos < totalApostas.length ; totaisJogos +=1){//li
     let acertos = 0;
     for (jogoMega = 0 ; jogoMega < megaSena.length ; jogoMega += 1){//números mega sena
         for(jogoAposta = 0 ; jogoAposta < aposta1.length ; jogoAposta +=1){//números de todos os jogos
-            if (aposta1[jogoAposta]===megaSena[jogoMega]){
+            if (aposta2[jogoAposta]===megaSena[jogoMega]){
                 acertos +=1;
             };
         };
 
     };
-console.log (`Valores apostados: ${aposta1}`);
+console.log (`Valores apostados: ${totalApostas[totaisJogos]}`);
 console.log(`jogo da mega sena: ${megaSena}`);
 console.log (`Número acertos: ${acertos}`);
 console.log(`------------------------------`);
+
 };
 
