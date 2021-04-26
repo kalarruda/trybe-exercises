@@ -7,10 +7,10 @@
 
 let numbers = 5;
 
-for (let coluna =0 ; coluna <=numbers ; coluna +=1){  
+for (let linha =0 ; linha <=numbers ; linha +=1){  
   let asteriscos=``;
-  for (let linha = numbers ; linha >0 ; linha -=1){
-    if(linha<=coluna){
+  for (let coluna = numbers ; coluna >0 ; coluna -=1){
+    if(linha>=coluna){
       asteriscos += `*`;
     }
     else{
