@@ -8,6 +8,6 @@ let info = {
 
 info.recorrente = 'sim';
 
-for (let index in info){
-  console.log(index);
+for (let key in info){
+  console.log(key);
 }

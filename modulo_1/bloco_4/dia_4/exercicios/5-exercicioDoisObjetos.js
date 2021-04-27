@@ -20,11 +20,11 @@ let info2 ={
   recorrente: 'sim',
 };
 
-for (let index in info,info2){
-  if(info[index] === info.recorrente && info[index] ==='sim' && info2[index] ==='sim'){
+for (let key in info,info2){
+  if(info[key] === info.recorrente && info.recorrente ==='sim' && info2.recorrente ==='sim'){
     console.log('ambos recorrentes');
   }
   else{
-    console.log(`${info[index]} e ${info2[index]}`);
+    console.log(`${info[key]} e ${info2[key]}`);
   }
 }

@@ -6,6 +6,6 @@ let carro = {
   year: 2020
 }
 
-for (let index in carro){
-    console.log(index, carro[index]);
+for (let key in carro){
+    console.log(key, carro[key]);
 }

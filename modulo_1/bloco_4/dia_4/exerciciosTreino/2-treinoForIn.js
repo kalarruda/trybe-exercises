@@ -6,6 +6,6 @@ let names = {
   person3: 'Jorge'
 }
 
-for (let index in names){
-  console.log(`Olá ${index} ${names[index]}`);
+for (let key in names){
+  console.log(`Olá ${key} ${names[key]}`);
 }
