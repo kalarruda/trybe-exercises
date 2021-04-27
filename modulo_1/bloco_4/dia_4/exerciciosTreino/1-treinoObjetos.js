@@ -6,7 +6,7 @@ let player = {// objeto
     golden: 2,
     silver: 3,      
   },  
-  bestInTheWorld:[2006, 2007, 2008, 2009, 2010, 2018],
+  bestInTheWorld:[2006, 2007, 2008, 2009, 2010,2018],
 };
 
 console.log(`\nA jogadora ${player.name} ${player.lastName} tem ${player.age} de idade.`);
