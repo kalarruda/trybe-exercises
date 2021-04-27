@@ -13,5 +13,5 @@ console.log(`\nA jogadora ${player.name} ${player.lastName} tem ${player.age} de
 
 console.log(`\nA jogadora ${player.name} ${player.lastName} foi eleita a melhor do mundo por ${player.bestInTheWorld.length} vezes.`);
 
-console.log(`\nA jogadora ${player.name} ${player.name} possui ${player.medals.golden} medalhas de ouro e ${player.medals.silver} medalhas de prata.`)
+console.log(`\nA jogadora ${player.name} ${player.name} possui ${player.medals.golden} medalhas de ouro e ${player.medals.silver} medalhas de prata.`);
 
