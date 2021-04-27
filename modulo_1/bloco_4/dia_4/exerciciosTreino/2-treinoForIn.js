@@ -7,5 +7,5 @@ let names = {
 }
 
 for (let index in names){
-  console.log(`Olá ${names[index]}`);
+  console.log(`Olá ${index} ${names[index]}`);
 }
