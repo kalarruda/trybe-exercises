@@ -9,15 +9,25 @@
     <script>
       var paragraph = document.getElementById("paragraph");
       paragraph.style.color = "white";
+      paragraph.classList.add("paragrafo");
+
       let titulo = document.getElementById("page-title");
       titulo.textContent = "Matrix";
+
       let segundoParagrafo = document.getElementById("second-paragraph");
       segundoParagrafo.style.color = "green";
       segundoParagrafo.style.fontSize = "30px";
+      segundoParagrafo.classList.add("paragrafo");
+
       let subTitulo = document.getElementById("subtitle");
       subTitulo.textContent = "Pegue a pílula vermelha.";
       subTitulo.style.color = "red";
       subTitulo.style.fontSize = "20px";
+
+      document.getElementsByClassName("paragrafo")[0].style.fontSize = "50px";
+
+      document.getElementsByTagName("h4")[0].style.fontSize = "60px";
+
     </script>
   </body>
 </html>
