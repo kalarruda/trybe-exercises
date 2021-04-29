@@ -9,3 +9,5 @@ let names = {
 for (let key in names){
   console.log(`Olá ${key} ${names[key]}`);
 }
+
+console.log(names);
