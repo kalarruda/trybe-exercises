@@ -45,22 +45,58 @@
 //         - document.getElementsByClassName()
 //         - document.getElementsByTagName()
 //  Crie uma função que mude o texto na tag <p> para uma descrição de como você se vê daqui a 2 anos. (Não gaste tempo pensando no texto e sim realizando o exercício)
-  document.getElementsByTagName('p')[0].innerText ="Gostaria de estar ganhando mais de R$ 6.000 para poder não ter mais problemas financeiros.";
+  function mudaTexto(){
+    document.getElementsByTagName('p')[1].innerText ="Gostaria de estar ganhando mais de R$ 6.000 para poder não ter mais problemas financeiros.";
+  }
+  mudaTexto();
   
 //  Crie uma função que mude a cor do quadrado amarelo para o verde da Trybe (rgb(76,164,109)).
-document.getElementsByClassName("main-content")[0].style.backgroundColor = "rgb(76,164,109)";
+function corFundoCentro(){
+  let fundoCentro = document.getElementsByClassName("main-content")[0];
+  fundoCentro.style.backgroundColor = "rgb(76,164,109)";
+}
+corFundoCentro();
 
 //  Crie uma função que mude a cor do quadrado vermelho para branco.
-document.getElementsByClassName("center-content")[0].style.backgroundColor = "rgb(255,255,255)";
+function corBlocoCentral(){
+  let blocoCentral = document.getElementsByClassName("center-content")[0];
+  blocoCentral.style.backgroundColor = "white";
+}
+corBlocoCentral();
 
 //  Crie uma função que corrija o texto da tag <h1>.
-  document.getElementsByTagName('h1')[0].innerText ="Exercício 5.1 - JavaScript";
+  function escreveTitulo(){
+    let titulo = document.getElementsByTagName('h1')[0];
+    titulo.innerText ="Exercício 5.1 - JavaScript";
+}  
+
+escreveTitulo();
 
 //  Crie uma função que modifique todo o texto da tag <p> para maiúsculo.
-  document.getElementsByTagName('p')[0];
+  function letrasMaiusculas(){
+    let maiusculas = document.getElementsByTagName('p')[0];    
+    maiusculas.innerHTML = maiusculas.innerHTML.toUpperCase();    
+  }
+  letrasMaiusculas();
+
+  // function letrasMaiusculas(){
+  //   let maiusculas = document.getElementsByTagName('p')[0];
+  //   for (index =0 ; index<maiusculas.length ; index +=1){
+  //     maiusculas[index].innerHTML.toUpperCase();
+  //   }
+  // }
+  // letrasMaiusculas();
+  
 
 //  Crie uma função que exiba o conteúdo de todas as tags <p> no console.
-  console.log(document.getElementsByTagName("p"));
+  function exibeConsole(){
+    let exibe = document.getElementsByTagName("p");
+    for (index =0 ; index<exibe.length ; index +=1){
+      // console.log(exibe[index].innerHTML);
+      console.log(exibe[index].innerText);
+    }
+  }
+  exibeConsole();
         
     </script>
   </body>
