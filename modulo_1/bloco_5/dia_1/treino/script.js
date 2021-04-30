@@ -1,18 +1,21 @@
 
-document.getElementsByTagName("h1")[0].style.backgroundColor = "green";
+let header = document.getElementById('header-container');
+header.style.backgroundColor = 'rgb(0, 176, 105)';
 
-document.querySelector("#footer-container").style.backgroundColor = "green";
+let fundoEsquerda = document.getElementsByClassName('emergency-tasks')[0];
+fundoEsquerda.style.backgroundColor = 'rgb(255, 159, 132)';
 
-document.querySelector(".emergency-tasks").style.backgroundColor = "pink";
+let fundoDireita = document.querySelector ('.no-emergency-tasks');
+fundoDireita.style.backgroundColor = 'rgb(249, 219, 94)';
 
-document.querySelector(".no-emergency-tasks").style.backgroundColor = "yellow";
+let esquerdaCabecalho = document.querySelectorAll('.emergency-tasks h3');
+for(let index=0 ; index<esquerdaCabecalho.length ; index +=1){
+  esquerdaCabecalho[index].style.backgroundColor = 'purple';
+}
 
-document.getElementsByTagName("h3")[0].style.backgroundColor = "blue";
+let direitaCabecalho = document.querySelectorAll('.no-emergency-tasks h3');
+for (let index =0 ; index<direitaCabecalho.length ; index+=1){
+  direitaCabecalho[index].style.backgroundColor = "black";
+}
 
-document.getElementsByTagName("h3")[1].style.backgroundColor = "blue";
-
-document.getElementsByTagName("h3")[2].style.backgroundColor = "black";
-
-document.getElementsByTagName("h3")[3].style.backgroundColor = "black";
-
-document.getElementsByTagName("body")[1].style.backgroundColor = "blue";
+document.querySelector('#footer-container').style.backgroundColor = "green";
