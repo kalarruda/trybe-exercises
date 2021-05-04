@@ -115,7 +115,7 @@ function mudaFundoSexta (sexta) {
   let btnSexta = document.getElementById('btn-friday');
   
   btnSexta.addEventListener('click', function(){
-    for (let index = 0; index < fridayDays.length; index +=1) {
+    for (let index = 0; index < fridayDays.length; index += 1) {
       if (fridayDays[index].innerHTML !== 'SEXTA!'){
         fridayDays[index].innerHTML = 'SEXTA!';
       }
@@ -178,3 +178,69 @@ function legendaColorida (cor) {
 }
 
 legendaColorida('green');
+
+// Exercício 9
+// Implemente uma função que adiciona um evento que ao clicar no elemento com a tag <div> referente a cor da sua tarefa, atribua a este elemento a classe task selected , ou seja, quando sua tarefa possuir a classe task selected ela estará selecionada.
+// Ao clicar novamente no elemento a sua classe deverá voltar a ser somente task , ou seja, esta tarefa está deixando de ser uma tarefa selecionada.
+
+function clickDiv () {
+  let task = document.querySelector('.task');
+  let TaskSelected = document.getElementsByClassName('task selected');
+  console.log(TaskSelected);
+  task.addEventListener('click', function(elemento){
+    if (TaskSelected.length === 0) { // NÃO ENTENDI ESSE 0!!!!
+      elemento.target.className = 'task selected';
+      elemento.target.style.backgroundColor = 'red';
+      console.log(TaskSelected.length); // muda de tamanho o length
+    }
+    else {
+      elemento.target.className = 'task';
+      elemento.target.style.backgroundColor = 'green';
+      console.log(TaskSelected.length); // muda de tamanho o length
+    }
+  })
+}
+
+clickDiv();
+
+// NÃO ENTENDIIIIIII--------------------------------------------
+// function clickDiv () {
+//   let task = document.querySelector('.task');
+//   let TaskSelected = document.getElementsByClassName('task selected');
+//   console.log(TaskSelected);
+//   task.addEventListener('click', function(elemento){
+//     if (elemento.target.style.backgroundColor === 'red') {
+//       elemento.target.className = 'task';
+//       elemento.target.style.backgroundColor = 'green';
+//     }
+//     if (elemento.target.style.backgroundColor  === 'green') {
+//       elemento.target.className = 'task selected';
+//       elemento.target.style.backgroundColor = 'red';
+//     }
+//   })
+// }
+
+// clickDiv();
+//----------------------------------------------------------------
+
+// Exercício 10
+// Implemente uma função que adiciona um evento que ao clicar em um dia do mês no calendário, atribua a este dia a cor da legenda da sua tarefa selecionada.
+// Ao clicar novamente no dia com a cor da legenda, a sua cor deverá voltar à configuração inicial rgb(119,119,119) .
+
+function mudaCorDia () {
+  let diasMes = document.querySelector('#days');
+  let task = document.querySelector('.task');
+  let taskColor = task.backgroundColor;
+
+  diasMes.addEventListener('click', function (elemento) {
+    let colorDiasMes = elemento.target.color;
+    if (task.length === 0 && colorDiasMes !== taskColor) {
+      elemento.target.style.color = taskColor;
+    }
+    else {
+      elemento.target.style.color = 'rgb(119,119,119)';
+    }
+  })
+}
+
+mudaCorDia();
