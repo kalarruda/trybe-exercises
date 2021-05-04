@@ -190,13 +190,15 @@ function clickDiv () {
   task.addEventListener('click', function(elemento){
     if (TaskSelected.length === 0) { // NÃO ENTENDI ESSE 0!!!!
       elemento.target.className = 'task selected';
-      elemento.target.style.backgroundColor = 'red';
+      // elemento.target.style.backgroundColor = 'red';
       console.log(TaskSelected.length); // muda de tamanho o length
+      console.log(TaskSelected);
     }
     else {
       elemento.target.className = 'task';
-      elemento.target.style.backgroundColor = 'green';
+      // elemento.target.style.backgroundColor = 'green';
       console.log(TaskSelected.length); // muda de tamanho o length
+      console.log(TaskSelected);
     }
   })
 }
@@ -230,17 +232,23 @@ clickDiv();
 function mudaCorDia () {
   let diasMes = document.querySelector('#days');
   let task = document.querySelector('.task');
-  let taskColor = task.backgroundColor;
+  let TaskSelected = document.getElementsByClassName('task selected');
+  let taskColor = task.style.backgroundColor;
 
   diasMes.addEventListener('click', function (elemento) {
-    let colorDiasMes = elemento.target.color;
-    if (task.length === 0 && colorDiasMes !== taskColor) {
+    let corDiaMes = elemento.target.style.color;
+    if (TaskSelected.length > 0 && corDiaMes !== taskColor) {
       elemento.target.style.color = taskColor;
     }
-    else {
+    else if (TaskSelected.length !== 0 && corDiaMes === taskColor) {
       elemento.target.style.color = 'rgb(119,119,119)';
     }
   })
 }
 
 mudaCorDia();
+
+// BONUS
+// Vamos adicionar compromissos ao seu calendário? Implemente uma função que, ao digitar um compromisso na caixa de texto "COMPROMISSOS", adiciona o item à lista "MEUS COMPROMISSOS" ao clicar no botão "ADICIONAR".
+// Se nenhum caractere for inserido no campo input , a função deve retornar um alert com uma mensagem de erro ao clicar em "ADICIONAR".
+// Ao pressionar a tecla "enter" o evento também deverá ser disparado.
