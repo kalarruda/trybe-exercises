@@ -53,6 +53,7 @@ for (let index = 0; index < botaoCorFonte.length; index += 1) {
   })
 }
 
+// muda tamanho da fonte =============================
 let botaoTamanhoFonte = document.querySelectorAll('#font-size button');
 for (let index = 0; index < botaoTamanhoFonte.length; index += 1) {
   botaoTamanhoFonte[index].addEventListener ('click', function (event) {
@@ -67,6 +68,7 @@ function MudaTamanhoFonte (size) {
   } // precisa desse "for" porque é mais de um elemento
   localStorage.setItem ('tamanhoFonte', size);
 }
+
 
 
 
