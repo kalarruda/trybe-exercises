@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="title">
+    <h1>Formulário</h1>
+  </header>
+  <main>
+    <form action="" id="forms">
+      <fieldset>
+        <div class="input-text">
+          <label for="name">Nome:</label>
+          <input class="input" type="text" id="name" maxlength="40" required>
+        </div>
+        <div class="input-text">
+          <label for="email">Email:</label>
+          <input class="input" type="email" id="email" maxlength="50" required>
+        </div>
+        <div class="input-text">
+          <label for="cpf">CPF:</label>
+          <input class="input" type="email" id="cpf" maxlength="11" required>
+        </div>
+        <div class="input-text">
+          <label for="end">Endereço:</label>
+          <input class="input" type="email" id="end" maxlength="200" required>
+        </div>
+        <div class="input-text">
+          <label for="city">Cidade:</label>
+          <input class="input" type="email" id="city" maxlength="28" required>
+        </div>
+        <div class="input-text">
+          <label for="state">Estado:</label>
+          <select name="state" id="state" required>
+            <option value="">Selecione</option>
+          </select>
+        </div>
+        <div class="input-text">
+          <label for="tipo">Tipo:</label>
+          <label for="casa">
+            <input type="radio" name="tipo" id="casa" required>Casa
+          </label>
+          <label for="apt">
+            <input type="radio" name="tipo" id="apt" required>Apartamento
+          </label>
+        </div>
+        
+      </fieldset>
+    </form>    
+  </main>  
+  <script src="script.js"></script>
+</body>
+</html>
