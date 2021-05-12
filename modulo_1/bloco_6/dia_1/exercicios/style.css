@@ -10,6 +10,11 @@ body {
   text-align: center;
 }
 
+#title h1 {
+  font-size: 2em;
+  color: rgb(146, 142, 137);
+}
+
 #forms {
   width: 40%;
   margin: 0 auto;
@@ -18,7 +23,8 @@ body {
 
 fieldset {
   border-radius: 3px;
-  background-color: rgb(238, 234, 229);
+  margin: 0 auto;
+  background-color: rgb(226, 220, 211);
   border: none;
 }
 
@@ -45,4 +51,10 @@ input[type=radio] {
   height: 20px;
   width: 20px;
   margin-left: 50px;
+}
+
+#resume {
+  resize: none;
+  width: 100%;
+  border: none;
 }
