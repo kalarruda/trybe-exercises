@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário</title>
+  <link rel="stylesheet" href="bootstrap-5.0.0-dist/css/bootstrap.min.css">  
+  <link rel="stylesheet" href="DatePickerX-master/dist/css/DatePickerX.min.css">  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="title">
+    <h1 class="display-3">Formulário</h1>
+  </header>
+  <main>
+    <form action="" id="forms">
+      <fieldset class="">
+        <div class="mb-3">
+          <label for="name">Nome:</label>
+          <input class="form-control form-control-lg" type="text" name="name" id="name" maxlength="40" >
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Senha:</label>
+          <input class="form-control form-control-lg" type="email" name="email" id="exampleInputPassword1" maxlength="50" >
+        </div>
+        <div class="mb-3">
+          <label for="cpf">CPF:</label>
+          <input class="form-control form-control-lg" type="text" name="cpf" id="cpf" maxlength="11" >
+        </div>
+        <div class="mb-3">
+          <label for="end">Endereço:</label>
+          <input class="form-control form-control-lg" type="text" name="ender" id="end" maxlength="200" >
+        </div>
+        <div class="mb-3">
+          <label for="city">Cidade:</label>
+          <input class="form-control form-control-lg" type="text" name="cida" id="city" maxlength="28" >
+        </div>
+        <!-- <div class="mb-3">
+          <label for="state">Estado:</label>
+          <select name="state" id="state" >
+            <option value="">Selecione</option>
+          </select>
+        </div> -->
+        <div class="mb-3 form-floating">
+          <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+            <option selected>Escolha Estado</option>
+          </select>          
+        </div>
+        <div class="mb-3 radios">
+          <label class="form-check-label" for="inlineRadio1">Casa
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+          </label>
+          <label class="form-check-label" for="inlineRadio2">Apartamento
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+          </label>        
+        </div>        
+      </fieldset>
+      <fieldset class="field">
+        <div class="mb-3">
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 300px"></textarea>
+            <label for="floatingTextarea2">Resumo:</label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="cargo">Cargo:</label>
+          <input class="form-control form-control-lg" name="job" type="text" id="cargo" maxlength="40" >
+        </div>
+        <div class="mb-3">
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 300px"></textarea>
+            <label for="floatingTextarea2">Descrição da função:</label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="date">Data de início:</label>
+          <input class="form-control form-control-lg"name="dataFim" type="date" id="datepicker" placeholder="00/00/0000" maxlength="40">
+        </div>
+        <button type="button" class="btn btn-outline-primary">Enviar</button>
+      </fieldset>
+    </form>    
+  </main>
+  <script src="jquery-3.6.0.min.js"></script>
+  <script src="bootstrap-5.0.0-dist/js/bootstrap.min.js"></script>
+  <script src="DatePickerX-master/dist/js/DatePickerX.js"></script>
+  <script src="Just-validate-master/dist/js/just-validate.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
