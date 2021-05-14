@@ -4,19 +4,19 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Formulário</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header id="title">
     <h1>Formulário</h1>
   </header>
-  <main>
-    <form action="" id="forms">
+  <main id="main">
+    <form action="" id="complete-form">
       <fieldset class="field">
         <div class="input-text">
-          <label for="name">Nome:</label>
-          <input class="input" type="text" name="name" id="name" maxlength="40" >
+          <label for="nome">Nome:</label>
+          <input class="input" type="text" name="nome" id="nome" maxlength="40" >
         </div>
         <div class="input-text">
           <label for="email">Email:</label>
@@ -27,26 +27,26 @@
           <input class="input" type="text" name="cpf" id="cpf" maxlength="11" >
         </div>
         <div class="input-text">
-          <label for="end">Endereço:</label>
-          <input class="input" type="text" name="ender" id="end" maxlength="200" >
+          <label for="endereco">Endereço:</label>
+          <input class="input" type="text" name="endereco" id="endereco" maxlength="200" >
         </div>
         <div class="input-text">
           <label for="city">Cidade:</label>
-          <input class="input" type="text" name="cida" id="city" maxlength="28" >
+          <input class="input" type="text" name="cidade" id="city" maxlength="28" >
         </div>
         <div class="input-text">
           <label for="state">Estado:</label>
-          <select name="state" id="state" >
+          <select name="estado" id="state" >
             <option value="">Selecione</option>
           </select>
-        </div>
+        </div>        
         <div class="input-text">
           <label for="tipo">Tipo:</label>
           <label for="casa">
-            <input type="radio" name="tipo" id="casa" >Casa
+            <input type="radio" name="moradia" id="casa" class="typeClass" value="casa">Casa
           </label>
           <label for="apt">
-            <input type="radio" name="tipo" id="apt" >Apartamento
+            <input type="radio" name="moradia" id="apt" class="typeClass" value="apartamento">Apartamento
           </label>
         </div>        
       </fieldset>
@@ -57,21 +57,18 @@
         </div>
         <div class="input-text">
           <label for="cargo">Cargo:</label>
-          <input class="input" name="job" type="text" id="cargo" maxlength="40" >
+          <input class="input" name="funcao" type="text" id="cargo" maxlength="40" >
         </div>
         <div class="input-text">
           <label for="descricao">Descrição do Cargo:</label>
-          <input class="input" name="descri" type="text" id="descricao" maxlength="40" >
+          <input class="input" name="descricao" type="text" id="descricao" maxlength="40" >
         </div>
-        <!-- <div class="input-text">
-          <label for="date">Data de início:</label>
-          <input class="input" name="dataIni" type="date" id="date" maxlength="40" required>
-        </div> -->
         <div class="input-text">
           <label for="date">Data de término:</label>
           <input class="input" name="dataFim" type="text" id="date" placeholder="00/00/0000" maxlength="40">
         </div>
-        <button type="" id="btn">Enviar</button>
+        <button type="submit" id="btnEnviar">Enviar</button>
+        <button type="" id="btnErase">Apagar</button>
       </fieldset>
     </form>    
   </main>  
