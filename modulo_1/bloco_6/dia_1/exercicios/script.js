@@ -1,77 +1,133 @@
-function handleSubmit(event) {
-  event.preventDefault();
+const selectStates = document.getElementById('state');
+const registerButton = document.getElementById('btnEnviar');
+const eraseButton = document.getElementById('btnErase');
+const main = document.getElementById('main');
+
+// const formsId = ['name', 'email', 'cpf', 'end', 'city', 'state', 'casa', 'apt', 'resume', 'cargo', 'descricao', 'date'];
+
+const formsId = ['nome', 'email', 'cpf', 'endereco', 'city', 'state', 'type', 'resume', 'cargo', 'descricao', 'date'];
+
+const states = ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'];
+
+function createStates (states) {
+  for (let index = 0; index < states.length; index += 1) {
+    const optionState = document.createElement('option');
+    optionState.innerText = states[index];
+    optionState.value = states[index]; // para usar no submit do formulário
+    selectStates.appendChild(optionState);
+  }  
 }
 
-const states = document.getElementById('state');
-
-const statesList = ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'];
-
-for (let index = 0; index < statesList.length; index += 1) {
-  const options = document.createElement('option');
-  options.innerHTML = statesList[index];
-  states.appendChild(options);
+function dayIsValid(day) {
+  if (day < 1 || day > 31) {
+    return false;
+  }
+  return true;
 }
 
+function monthIsValid(month) {
+  if (month < 1 || month > 12) {
+    return false;
+  }
+  return true;
+}
 
-// let valor = '10/02/21';
-// let valorArray = valor.split('/');
-// console.log(valorArray);
+function yearIsValid(year) {
+  if (year < 0) {
+    return false;
+  }
+  return true;
+}
 
-let valorData = document.getElementById('date').value;
-let valorArray2 = valorData.split('/');
-let botao = document.getElementById('btn');
-let arrayData = [];
+function dateInput() {
+  let date = document.getElementById('date').value;// pega o valor da data
+  const formatDate = /^\d\d\/\d\d\/\d\d$/; // formato que a data tem que ser 
+  if (date.length === 0) { // se tamanho da data for menor que 10 (porque cada número e barra conta no length)
+    alert ('Data não preenchida.');
+    return false;
+  }
+  if (!formatDate.test(date)) { // usa função test para comparar o conteúdo
+    alert ('Formato de data inválido.');
+    return false;
+  }
+  date = date.split('/');
+  const day = date[0];
+  const month = date[1];
+  const year = date[2];
+  const responseDayIsValid = dayIsValid(day); // pega a função de cima
+  const responseMonthIsValid = monthIsValid(month); // pega a função de cima
+  const responseYearIsValid = yearIsValid(year); // pega a função de cima
+  if (responseDayIsValid === false) {
+    alert ('Dia inválido.');
+  }
+  if (responseMonthIsValid === false) {
+    alert ('Mês inválido.');
+  }
+  if (responseYearIsValid === false) {
+    alert ('Ano inválido.');
+  }
+  return (responseDayIsValid && responseMonthIsValid && responseYearIsValid);
+} // vai retornar o return com false se tiver algum false ou true se TODOS forem true (pela regra de &&)
 
-botao.addEventListener('click', function(event) {
-  arrayData = valorArray2;
-  return `${arrayData[2]}`;
-});
+let originalTypeIdList = [];
 
+function typeListId() {
+  const typeList = document.querySelectorAll('.typeClass');
+  for (let index = 0; index < typeList.length; index += 1) {
+    originalTypeIdList.push(typeList[index].id); // coloca os ids originais dos itens que possuem classe typeClass na array
+  }
+}
 
-// function validaDate(valor) {
-//   nova = valor.split('/');
-//   let dia = nova[0];
-//   let mes = nova[1];
-//   let ano = nova[2];
+function typeChange() {
+  const typeList = document.querySelectorAll('.typeClass');
+  for (let index = 0; index < typeList.length; index += 1) {
+    if (typeList[index].checked) { // se o radio button estiver "checkado" (selecionado)
+      typeList[index].id = 'type'; // o id muda para "type"
+    }
+    if (!typeList[index].checked) {
+      typeList[index].id = originalTypeIdList[index];
+    } // se não estiver selecionado recebe o id original
+  }
+}
 
-//   return `${dia} ${mes} ${ano} `;
+function submitButton() {
+  registerButton.addEventListener('click', (event) => {
+    typeChange();
+    const dateInputIsValid = dateInput();
+    if (!dateInputIsValid) {
+      event.preventDefault(); // previne que o submit faça a função de "submeter" ou "enviar"
+    }
+  });
+}
 
-//   // let data_array = valor.split('/');
-//   // let dia = data_array[0];
-//   // let mes = data_array[1];
-//   // let ano = data_array[2];
+function getForm(formsId) {
+  let answeredForm = document.getElementById('complete-form');
+  let elementDiv = document.createElement('div'); // adiciona div com as informações preenchidas do formulário para mostrar na tela no final se o submite for true
+  elementDiv.id = 'resultDiv'; // acrescenta esse id nessa div
+  main.appendChild(elementDiv);
+  answeredForm.addEventListener('submit', (event) => { // verificar depois se coloca o registerButton
+    event.preventDefault(); // verificar depois 
+    for (let index =0; index < formsId.length; index += 1) {
+      let elementP = document.createElement('p'); // criar o parágrafo dentro da div para colocar as informações
+      elementDiv.appendChild(elementP);
+      let elementId = document.getElementById(`${formsId[index]}`); // pega o valor de cada elemento do array formsId
+      elementP.innerText = `${elementId.name}: ${elementId.value}`; // pega os valores dos "name" e o "value" dentro do parágrafo que vai dentro da div
+    }
+    let quebraLinha = document.createElement('br');
+    elementDiv.appendChild(quebraLinha);
+  });
+}
 
-//   // return console.log(nova);
-//   return ` ${dia}`;
-//   // console.log(mes);
-//   // console.log(ano);
-// }
+function clearButton() {
+  eraseButton.addEventListener('click', () => {
+    let elementDiv = document.getElementById('resultDiv');
+    main.removeChild(elementDiv);
+  });
+}
 
+createStates(states);
+typeListId();
+submitButton();
+getForm(formsId);
+clearButton();
 
-
-botao.addEventListener('click', function (e) {
-  e.preventDefault();
-});
-
-// let data = '10/02/2021';
-// let barra = '/';
-
-// // console.log(nova);
-// validaDate(nova, barra);
-
-
-
-
-
-//+++++++++++++++++++++++
-
-// const separador = input.value.split('/');
-// const dia = separador[0];
-// const mes = separador[1];
-// const ano = separador[2];
-// console.log(separador[0]);
-
-// function verificaData() {
-//   let diaInicial = document.getElementById('date');
-
-// }
