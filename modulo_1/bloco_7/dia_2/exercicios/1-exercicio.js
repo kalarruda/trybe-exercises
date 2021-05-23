@@ -54,15 +54,11 @@ customerInfo(order);
 // Modifique o valor total da compra para R$ 50,00
 
 const orderModifier = (order) => {  
-  order.name = 'Luiz Silva';
-  const name = order.name;
-  order.order.pizza.margherita = 'muzzarella';
-  const muzzarella = order.order.pizza.margherita;
-  order.order.pizza.pepperoni = 'calabresa';
-  const calabresa = order.order.pizza.pepperoni;
+  const name = order.name = 'Luiz Silva';
+  const muzzarella = order.order.pizza.margherita = 'muzzarella';
+  const calabresa = order.order.pizza.pepperoni = 'calabresa';  
   const coke = order.order.drinks.coke.type;
-  order.payment = '50';
-  const price = order.payment;
+  const price  = order.payment = '50';
 
   console.log (`Olá ${name}, o total de seu pedido de ${muzzarella}, ${calabresa} e ${coke} é de R$ ${price}`);
 }
