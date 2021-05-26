@@ -4,7 +4,7 @@
 const rightAnswers = ['A', 'C', 'B', 'D', 'A', 'A', 'D', 'A', 'D', 'C'];
 const studentAnswers = ['A', 'N.A', 'B', 'D', 'A', 'C', 'N.A', 'A', 'D', 'B'];
 
-const resultTest = (rightAnswers, studentAnswers, callback) => { 
+const resultTest = (callback) => {
   return callback(rightAnswers, studentAnswers);
 };
 
@@ -22,4 +22,4 @@ const checkTest = (rightAnswers, studentAnswers) => {
   return `resultado: ${points} pontos`;
 };
 
-console.log(resultTest(rightAnswers, studentAnswers, checkTest));
+console.log(resultTest(checkTest));
