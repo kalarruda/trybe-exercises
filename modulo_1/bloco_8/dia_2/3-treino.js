@@ -11,10 +11,12 @@ const showEmailList = (email) => {
   console.log(`O email ${email} esta cadastrado em nosso banco de dados!`);
 };
 
-emailListInData.forEach((item, size) => {
-  showEmailList(item);
-  console.log('posição:', size);
-});
+emailListInData.forEach(showEmailList);
+
+// emailListInData.forEach((item, size) => { // também funciona e adiciona a posição dos objetos
+//   showEmailList(item);
+//   console.log('posição:', size);
+// });
 
 // ---------treino com find -----------------------
 
