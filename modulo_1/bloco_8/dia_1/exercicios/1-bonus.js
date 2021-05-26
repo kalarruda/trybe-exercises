@@ -30,7 +30,7 @@ const dragonAttack = (dragonPlayer) => {
   const dragonDamage = Math.round(Math.random() * (strength - min)) + min; // numero aleatório entre 15 e strength
   dragon.damage = dragonDamage;
   // return `Ataque do dragão: ${dragonDamage} de dano.`;
-  return dragonDamage;  
+  return dragonDamage;
 };
 
 // 2 - Crie uma função que retorna o dano causado pelo warrior .
@@ -76,16 +76,30 @@ const gameActions = {
   },
   mageTurn: (mageAction) => {
     const mageDamage = mageAction(mage);
-    console.log('teste', Object.keys(mageDamage));
-    mage.damage = mageDamage[1];
+    mage.damage = Object.values(mageDamage)[0];
+    mage.manaSpend = Object.values(mageDamage)[1];
+    mage.mana = Object.values(mageDamage)[2];
     dragon.healthPoints -= mage.damage;
-    return mage.damage;
+    return { damage: mage.damage, mana: mage.mana, manaSpend: mage.manaSpend };
   },
+  dragonTurn: (dragonAction) => {
+    const dragonDamage = dragonAction(dragon);
+    dragon.damage = dragonDamage;
+    warrior.healthPoints -= dragon.damage;
+    mage.healthPoints -= dragon.damage;
+    return dragon.damage;
+  },
+  turnResults: () => (battleMembers),
 };
 
-console.log('Dano do mago:', gameActions.mageTurn(mageAttack));
-console.log('Dano do guerreiro:', gameActions.warriorTurn(warriorAttack));
-console.log('healthPoints dragao:', dragon.healthPoints);
+gameActions.mageTurn(mageAttack);
+gameActions.warriorTurn(warriorAttack);
+gameActions.dragonTurn(dragonAttack);
+console.log(gameActions.turnResults());
+// console.log('Dano do mago:', gameActions.mageTurn(mageAttack));
+// console.log('Dano do guerreiro:', gameActions.warriorTurn(warriorAttack));
+// console.log('Dano do dragão: ', gameActions.dragonTurn(dragonAttack));
+// console.log('healthPoints dragao:', dragon.healthPoints);
 // console.log('Dano do dragão:', dragonAttack(dragon));
 // console.log('Dano do mago:', mageAttack(mage));
 // console.log('Dano do guerreiro:', warriorAttack(warrior));
