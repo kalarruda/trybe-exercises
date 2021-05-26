@@ -1,5 +1,3 @@
-// 1 - Crie uma função que retorna o dano do dragão.
-// O dano será um número aleatório entre 15 (dano mínimo) e o valor do atributo strength (dano máximo).
 
 const mage = {
   healthPoints: 130,
@@ -23,11 +21,53 @@ const dragon = {
 
 const battleMembers = { mage, warrior, dragon };
 
-const dragonAttack = (dragon) => {
+// 1 - Crie uma função que retorna o dano do dragão.
+// O dano será um número aleatório entre 15 (dano mínimo) e o valor do atributo strength (dano máximo).
+
+const dragonAttack = (dragonPlayer) => {
   const min = 15;
-  const { strength } = dragon;
-  const randomDamage = Math.round(Math.random() * (strength - min)) + min; // numero aleatório entre 15 e damage
-  return `Ataque do dragão: ${randomDamage} de dano.`;
+  const { strength } = dragonPlayer; // const min = dragon.strength - também pode
+  const dragonDamage = Math.round(Math.random() * (strength - min)) + min; // numero aleatório entre 15 e strength
+  return `Ataque do dragão: ${dragonDamage} de dano.`;
 };
 
 console.log(dragonAttack(dragon));
+
+// 2 - Crie uma função que retorna o dano causado pelo warrior .
+// O dano será um número aleatório entre o valor do atributo strength (dano mínimo) e o valor de strength * weaponDmg (dano máximo).
+
+const warriorAttack = (warriorPlayer) => {
+  const { weaponDmg } = warriorPlayer; // max value
+  const min = warriorPlayer.strength;
+  const warriorDamage = Math.round(Math.random() * (weaponDmg - min) + min);
+  return `Ataque do guerreiro: ${warriorDamage} de dano.`
+};
+
+console.log(warriorAttack(warrior));
+
+// 3 - Crie uma função que retorna um objeto com duas chaves e dois valores contendo o dano e a mana gasta pelo mago em um turno.
+// O dano será um número aleatório entre o valor do atributo intelligence (dano mínimo) e o valor de intelligence * 2 (dano máximo).
+// A mana consumida por turno é 15. Além disto a função deve ter uma condicional, caso o mago tenha menos de 15 de mana o valor de dano recebe uma mensagem (Ex: "Não possui mana suficiente") e a mana gasta é 0.
+
+const mageAttack = (magePlayer) => {
+  const min = magePlayer.intelligence; // OU: const { intelligence } = magePlayer; dano min
+  const max = magePlayer.intelligence * 2;
+  const mageAttack = Math.round(Math.random() * (max - min) + min);
+  // let mana = magePlayer.mana; // OU: const { mana } = magePlayer;
+  for (let mana = magePlayer.mana; mana > 15; mana -= 15) {
+    if (mana > 15) {
+      mana -= 15;
+      return { mageAttack, manaSpend: 15, mana };      
+    }
+    return `Não possui mana suficiente`;
+  }
+};
+
+console.log(mageAttack(mage));
+
+// 1 - Crie a primeira HOF que compõe o objeto gameActions . Ela será a função que simula o turno do personagem warrior . Esta HOF receberá como parâmetro a função que calcula o dano deferido pelo personagem warrior e atualizará os healthPoints do monstro dragon . Além disto ela também deve atualizar o valor da chave damage do warrior .
+
+const gameActions = {
+  // Crie as HOFs neste objeto.
+};
+
