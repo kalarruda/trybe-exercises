@@ -49,19 +49,36 @@ const warriorAttack = (warriorPlayer) => {
 // O dano será um número aleatório entre o valor do atributo intelligence (dano mínimo) e o valor de intelligence * 2 (dano máximo).
 // A mana consumida por turno é 15. Além disto a função deve ter uma condicional, caso o mago tenha menos de 15 de mana o valor de dano recebe uma mensagem (Ex: "Não possui mana suficiente") e a mana gasta é 0.
 
-const mageAttack = (magePlayer) => {
-  const min = magePlayer.intelligence; // OU: const { intelligence } = magePlayer; dano min
-  const max = magePlayer.intelligence * 2;
-  const mageDamage = Math.round(Math.random() * (max - min) + min);
-  // let mana = magePlayer.mana; // OU: const { mana } = magePlayer;
-  mage.damage = mageDamage;
-  for (let mana = magePlayer.mana; mana > 15; mana -= 15) {
-    if (mana > 15) {
-      mana -= 15;
-      return { damage: mageDamage, manaSpend: 15, mana };      
-    }
-    return `Não possui mana suficiente`;
+// const mageAttack = (magePlayer) => {
+//   const min = magePlayer.intelligence; // OU: const { intelligence } = magePlayer; dano min
+//   const max = magePlayer.intelligence * 2;
+//   const mageDamage = Math.round(Math.random() * (max - min) + min);
+//   // let mana = magePlayer.mana; // OU: const { mana } = magePlayer;
+//   mage.damage = mageDamage;
+//   for (let mana = magePlayer.mana; mana > 15; mana -= 15) {
+//     if (mana > 15) {
+//       mana -= 15;
+//       return { damage: mageDamage, manaSpend: 15, mana };      
+//     }
+//     return `Não possui mana suficiente`;
+//   }
+// };
+
+const calcMageDamage = (intelligence) => Math.ceil(Math.random() * ((intelligence * 2) - intelligence) + intelligence);
+
+const calcMageMana = (mana) => {
+ if (mana < 15) {
+  return 'Não possui mana suficiente';
+ }
+ return mana -= 15;
+};
+
+const mageStatus = (intelligence, mana) => {
+  const status = {
+    damage: calcMageDamage(intelligence),
+    mana: calcMageMana(mana),
   }
+  return status;
 };
 
 // 1 - Crie a primeira HOF que compõe o objeto gameActions . Ela será a função que simula o turno do personagem warrior . Esta HOF receberá como parâmetro a função que calcula o dano deferido pelo personagem warrior e atualizará os healthPoints do monstro dragon . Além disto ela também deve atualizar o valor da chave damage do warrior .
@@ -74,28 +91,61 @@ const gameActions = {
     dragon.healthPoints -= warrior.damage;
     return warrior.damage;
   },
-  mageTurn: (mageAction) => {
-    const mageDamage = mageAction(mage);
-    mage.damage = Object.values(mageDamage)[0];
-    mage.manaSpend = Object.values(mageDamage)[1];
-    mage.mana = Object.values(mageDamage)[2];
+  // mageTurn: (mageAction) => {
+  //   const mageDamage = mageAction(mage);
+  //   mage.damage = Object.values(mageDamage)[0];
+  //   mage.manaSpend = Object.values(mageDamage)[1];
+  //   mage.mana = Object.values(mageDamage)[2];
+  //   dragon.healthPoints -= mage.damage;
+  //   return { damage: mage.damage, mana: mage.mana, manaSpend: mage.manaSpend };
+  // },
+  mageTurn: (callback) => {
+    const damageAndMana = callback(mage.intelligence, mage.mana);
+    mage.damage = damageAndMana.damage;
+    mage.mana = damageAndMana.mana;
     dragon.healthPoints -= mage.damage;
-    return { damage: mage.damage, mana: mage.mana, manaSpend: mage.manaSpend };
   },
+
   dragonTurn: (dragonAction) => {
     const dragonDamage = dragonAction(dragon);
     dragon.damage = dragonDamage;
     warrior.healthPoints -= dragon.damage;
     mage.healthPoints -= dragon.damage;
     return dragon.damage;
-  },
+  },  
   turnResults: () => (battleMembers),
 };
 
-gameActions.mageTurn(mageAttack);
-gameActions.warriorTurn(warriorAttack);
-gameActions.dragonTurn(dragonAttack);
-console.log(gameActions.turnResults());
+const gameTurns = () => {
+  gameActions.mageTurn(mageStatus);
+  gameActions.warriorTurn(warriorAttack);
+  gameActions.dragonTurn(dragonAttack);
+  console.log(gameActions.turnResults());
+};
+
+console.log(`------------1-turn-------------`)
+gameTurns();
+console.log(`------------2-turn-------------`)
+gameTurns();
+console.log(`------------3-turn-------------`)
+gameTurns();
+console.log(`------------4-turn-------------`)
+gameTurns();
+console.log(`------------5-turn-------------`)
+gameTurns();
+console.log(`------------6-turn-------------`)
+gameTurns();
+console.log(`------------7-turn-------------`)
+gameTurns();
+console.log(`------------8-turn-------------`)
+gameTurns();
+console.log(`------------9-turn-------------`)
+gameTurns();
+
+// gameActions.mageTurn(mageAttack);
+// gameActions.warriorTurn(warriorAttack);
+// gameActions.dragonTurn(dragonAttack);
+// console.log(gameActions.turnResults());
 // console.log('Dano do mago:', gameActions.mageTurn(mageAttack));
 // console.log('Dano do guerreiro:', gameActions.warriorTurn(warriorAttack));
 // console.log('Dano do dragão: ', gameActions.dragonTurn(dragonAttack));
