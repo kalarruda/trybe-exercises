@@ -14,10 +14,10 @@ console.log(firstMultipleOf5);
 
 // mesma função usando Array.find ao invés do "for" e "if": -------------------------
 
-const numbers = [11, 24, 39, 47, 50, 62, 75, 81, 96, 100];
-const firstMultipleOf5 = numbers.find((number) => number % 5 === 0);
+const numbers1 = [11, 24, 39, 47, 50, 62, 75, 81, 96, 100];
+const firstMultipleOf51 = numbers1.find((number) => number % 5 === 0);
 
-console.log(firstMultipleOf5);
+console.log(firstMultipleOf51);
 // 50
 
 // ------------------------------------------------------
