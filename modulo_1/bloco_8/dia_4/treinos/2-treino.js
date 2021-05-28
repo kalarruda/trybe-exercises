@@ -17,5 +17,6 @@ const getSum1 = (result, number) => {
   return result + number;
   };
   const sumNumbers2 = numbers.reduce(getSum1); // sem adicionar o "0" no reduce
-const sumNumbers1 = numbers.reduce(getSum1, 0); // Parâmetro adicionado ao reduce: o "0"
-console.log(sumNumbers1); // 113
+  console.log(sumNumbers2); // 113
+const sumNumbers1 = numbers.reduce(getSum1, 10); // Parâmetro adicionado ao reduce: o "10" alterando o resultado final
+console.log(sumNumbers1); // 123
