@@ -74,3 +74,18 @@ const estudantes = [
     ],
   },
 ];
+
+const subjects = (result, subject) => { 
+  if (result.nota > subject.nota) {
+    return result;
+  }
+  return subject;
+};
+
+const bestGrade = (students) => students.map((student) => (
+  {
+    name: student.nome,
+    materias: student.materias.reduce(subjects).name }
+))
+
+console.log(bestGrade(estudantes));
