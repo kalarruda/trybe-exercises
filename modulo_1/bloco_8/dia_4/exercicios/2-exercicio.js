@@ -67,8 +67,20 @@ const books = [
 
 const expectedResult = "George R. R. Martin, J. R. R. Tolkien, Isaac Asimov, Frank Herbert, Stephen King, H. P. Lovecraft.";
 
+// function reduceNames() {
+//   const names = books.reduce((acc, curr, currIndex, array) => {
+//     (currIndex === array.length - 1) ? `${acc} ${( curr.author.name)}. ` : `${acc} ${( curr.author.name)},`}, '');
+//   return names.trim();
+// }
+
 function reduceNames() {
-  return books.reduce((acc, curr, currIndex, array) => {(currIndex === array.length - 1) ? `${acc} ${( curr.author.name)}. ` : `${acc} ${( curr.author.name)},`, ''});
+  const names = books.reduce((acc, curr, currIndex, array) => {
+    if (currIndex === array.length - 1) {
+      return `${acc} ${( curr.author.name)}. `;
+    }
+    return `${acc} ${( curr.author.name)},`;
+    }, '');
+  return names.trim(); // NÃO ENTENDI ESSE TRIM
 }
 
 // function reduceNames() {
@@ -79,17 +91,10 @@ function reduceNames() {
 //   return names.trim();
 // }
 
-// assert.strictEqual(reduceNames(), expectedResult);
 console.log(reduceNames());
 
+assert.strictEqual(reduceNames(), expectedResult);
 // assert.strictEqual(reduceNames(), expectedResult);
 
-// id: 1,
-// name: 'As Crônicas de Gelo e Fogo',
-// genre: 'Fantasia',
-// author: {
-//   name: 'George R. R. Martin',
-//   birthYear: 1948,
-// },
-// releaseYear: 1991,
-// },
+
+
