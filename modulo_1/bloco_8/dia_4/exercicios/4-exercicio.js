@@ -63,4 +63,10 @@ const books = [
   },
 ];
 
-// Adicione o código do exercício aqui:
+// 4 - Encontre o livro com o maior nome.
+
+function longestNamedBook() {
+  // escreva seu código aqui
+}
+
+assert.deepStrictEqual(longestNamedBook(), expectedResult);
