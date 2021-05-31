@@ -63,15 +63,15 @@ const books = [
   },
 ];
 
-// 7 - Encontre o nome do livro escrito pela pessoa cujo nome registrado começa com três iniciais.
-// Dica: cada inicial termina com um ponto
+// 4 - Encontre o livro com o maior nome.
 
-//NÃO ENTENDI ESSA BAGAÇA --NÃO ENTENDI ESSA BAGAÇA --NÃO ENTENDI ESSA BAGAÇA --NÃO ENTENDI ESSA BAGAÇA --NÃO ENTENDI ESSA BAGAÇA -- 
-const expectedResult = 'O Senhor dos Anéis';
-
-function authorWith3DotsOnName() {
-  // return books.find((book) => (book.author.name.split(' ')).filter((book) => book.endsWith('.')).length === 3).name;
-  return books.filter(bookFilter => bookFilter.author.name.match(/\w\.\s\w\.\s\w\.\s/))[0].name;
+function longestNamedBook() {
+  return books.reduce((acc, curr) => {
+    if (acc.name.length < curr.name.length)  {
+      return curr;
+    } 
+    return acc;
+  })
 }
-console.log(authorWith3DotsOnName());
-// assert.deepStrictEqual(authorWith3DotsOnName(), expectedResult);
+console.log(longestNamedBook())
+// assert.deepStrictEqual(longestNamedBook(), expectedResult);
