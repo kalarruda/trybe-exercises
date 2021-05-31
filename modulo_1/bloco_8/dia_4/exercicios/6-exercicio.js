@@ -1,0 +1,44 @@
+// 6. - Agora vamos criar um novo array de objetos a partir das informações abaixo, onde cada objeto terá o formato { name: nome do aluno, average: media das notas } . Para isso vamos assumir que a posição 0 de notas refere-se ao aluno na posição 0 de alunos , aqui além de reduce será necessário utilizar também a função map . Dica: Você pode acessar o index do array dentro de map , e você pode ver o objeto esperado na constante expected 
+
+const assert = require('assert');
+
+const students = ['Pedro Henrique', 'Miguel', 'Maria Clara'];
+const grades = [[9, 8, 10, 7, 5], [10, 9, 9, 10, 8], [10, 7, 10, 8, 9]];
+
+function sumGrades(acc, grade) {
+  return acc + grade;
+}
+console.log('BOSTA',sumGrades);
+
+function medGrades(index) {
+  const calc = grades[index].reduce(sumGrades,0);
+  return calc / grades[index].length;
+}
+
+function studentAverage() {
+  return students.reduce((acc, currStudent, index) => {
+    const creatObject = {
+      name: currStudent,
+      average: medGrades(index),
+    }
+    acc.push(creatObject);
+    return acc;
+  }, []);
+}
+console.log(studentAverage());
+
+const expected = [
+  { name: 'Pedro Henrique', average: 7.8 },
+  { name: 'Miguel', average: 9.2 },
+  { name: 'Maria Clara', average: 8.8 },
+];
+
+// assert.deepStrictEqual(studentAverage(), expected);
+
+
+
+// function studentAverage() {
+//   const nameStudents = students.map((name) => name);
+//   // const gradeStudents
+//   return nameStudents;
+// }
