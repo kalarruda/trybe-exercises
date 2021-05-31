@@ -11,9 +11,13 @@ const assert = require('assert');
 // } 
 // console.log(calc(1, 7));
 
-const sum = (...numbers) => numbers.reduce((acc, curr) => acc + curr, 0);
+const sum = (...numbers) => numbers.reduce((acc, curr, index) => {
+  console.log(index,'acumulador',acc);
+  console.log(index,'current',curr);  
+  return acc + curr
+}, 0);
 
-console.log('sou burro demais',sum());
+console.log(sum(1, 3, 4, 5));
 
 // assert.strictEqual(sum(), 0);
 // assert.strictEqual(sum(1), 1);
