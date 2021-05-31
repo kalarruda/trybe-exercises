@@ -11,7 +11,7 @@ const names = [
 function containsA() {
   const nameSize = names.reduce((acc, curr) => {
     return acc += curr.match(/a/gi).length;
-  },0)
+  },0)  
   return nameSize;
 }
 
