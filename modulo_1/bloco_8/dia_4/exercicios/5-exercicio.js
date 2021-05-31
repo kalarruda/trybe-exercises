@@ -9,10 +9,12 @@ const names = [
 ];
 
 function containsA() {
-  // const lowerA = names.lowerCase();
-  return names.map((letter) => letter.lowerCase());
+  const nameSize = names.reduce((acc, curr) => {
+    return acc += curr.match(/a/gi).length;
+  },0)
+  return nameSize;
 }
 
-console.log(containsA());
+console.log('RESPOSTA',containsA());
 
-// assert.deepStrictEqual(containsA(), 20);
+assert.deepStrictEqual(containsA(), 20);
