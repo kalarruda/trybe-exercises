@@ -17,13 +17,8 @@ const chiron = ['Chiron', 'Bugatti', 2016];
 //   }
 // }
 
-const toObject = ([name, brand, year]) => {
-  return {
-    name,
-    brand,
-    year
-  }
-}
+const toObject = ([name, brand, year]) => ({name, brand, year});
+
 console.log(toObject(palio));
 
 
