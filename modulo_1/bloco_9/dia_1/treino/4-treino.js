@@ -15,6 +15,6 @@ const getUser = (callback) => {
     console.log(callback(user)) ;
   }, delay());
 };
-
+// DETALHE QUE ESSAS FUNÇÕES ABAIXO COMO SÃO ALEATÓRIAS PODEM SER CHAMADAS ANTES OU DEPOIS DA OUTRA
 getUser(userFullName); // deve imprimir "Hello! My name is Ivan Ivanovich" depois de um certo tempo
 getUser(userNationality); // deve imprimir "Ivan is Russian" depois de um certo tempo
