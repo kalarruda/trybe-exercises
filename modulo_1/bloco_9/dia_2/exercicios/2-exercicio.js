@@ -14,7 +14,7 @@ const fetchPromisse = () => {
   });
   
   myPromise
-  // .then((sum) => console.log(`Promise resolvida ${sum}`)) // esse o resolve passou
+  // .then((sum) => console.log(`Promise resolvida ${sum}`)) // esse o "resolve" passou
   .then((divide) => [2, 3, 5, 10].map((number) => divide / number))
   .then((array) => array.reduce((acc, curr) => acc + curr, console.log(array)))
   .catch((sum) => console.log(`É mais de oito mil! Essa promise deve estar quebrada! ${sum}`)); // esse o resolve não passou, logo, entrou o reject
