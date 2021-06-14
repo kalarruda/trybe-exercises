@@ -4,7 +4,7 @@
 // Teste se a função sum lança um erro quando os parâmetros são 4 e "5" (string 5)
 // Teste se a mensagem de erro é "parameters must be numbers" quando realizar a chamada sum(4, "5")
 
-const sum = require('./1-exercicios')
+const sum = require('../1-exercicios')
 
 describe('1-sum function', () => {
   it('Testa se (4, 5) retorna 9', () => {
