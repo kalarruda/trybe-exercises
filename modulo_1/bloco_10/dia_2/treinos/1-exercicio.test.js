@@ -9,8 +9,7 @@ const uppercase = (str, callback) => {
 describe('uppercase function', () => {
   it('Testa se letras ficam uppercase', () => {
     uppercase('palavra', (str) => {
-      expect(str).toBe('PALAVRA');
-      
+      expect(str).toBe('PALAVRA');      
     })
   }) 
 })
