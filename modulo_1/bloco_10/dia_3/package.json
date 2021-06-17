@@ -8,7 +8,7 @@
     "jest": "^27.0.4"
   },
   "scripts": {
-    "test": "jsen --verbose"
+    "test": "jest --verbose"
   },
   "keywords": [],
   "author": "",
