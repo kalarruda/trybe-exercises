@@ -1,9 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import Task from './Tasks';
-
 const myList = ['run', 'study', 'sleep'];
-
+console.log('TESTE',myList);
 function App() {
   return (
     <div className="App">
@@ -21,8 +20,7 @@ function App() {
           Learn React
         </a>
         <ul>
-        { myList.map(myList => Task(myList)) }
-         {/* < Task/> { myList.map((item) => Task(item))} */}
+         { myList.map((item) => <Task nomeItem = { <li>{item}</li> }/>)}
         </ul>
       </header>
     </div>
