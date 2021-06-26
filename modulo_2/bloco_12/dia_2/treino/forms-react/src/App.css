@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+}
+
+.forms-container {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+}
