@@ -6,6 +6,7 @@ class DadJoke extends React.Component {
 
     this.saveJoke = this.saveJoke.bind(this);
     this.renderJokeElement = this.renderJokeElement.bind(this);
+    // this.fetchAPI = this.fetchAPI.bind(this);
 
     this.state = {
       jokeObj: undefined,
@@ -15,12 +16,18 @@ class DadJoke extends React.Component {
   }
 
   async fetchJoke() {
+    this.setState({
+      loading: true, // toda vez que chamar o this.fetchJoke o loading vai ser true
+    }, async () => {
     const requestHeaders = { headers: { Accept: 'application/json' } }
     const requestReturn = await fetch('https://icanhazdadjoke.com/', requestHeaders)
     const requestObject = await requestReturn.json();
+    console.log(requestObject)
     this.setState({
-      jokeObj: requestObject,
-    })
+      jokeObj: requestObject, // jokeObjt recebe uma piada
+      loading: false, // o loading vai ser falso quando tiver um elemento já dentro do jokeObj
+    })})
+    
   }
 
   componentDidMount() {
@@ -28,8 +35,10 @@ class DadJoke extends React.Component {
   }
 
   saveJoke() {
-    //Salvando a piada no array de piadas existentes
-
+    this.setState(({storedJokes, jokeObj}) => ({
+      storedJokes: [...storedJokes, jokeObj]
+    }))
+    this.fetchJoke();
   }
 
   renderJokeElement() {
@@ -44,8 +53,8 @@ class DadJoke extends React.Component {
   }
 
   render() {
-    const { storedJokes } = this.state;
-    const loadingElement = <span>Loading...</span>;
+    const { storedJokes, jokeObj, loading } = this.state;
+    const loadingElement = <span>Carregando...</span>;
 
     return (
       <div>
@@ -53,8 +62,9 @@ class DadJoke extends React.Component {
           {storedJokes.map(({ id, joke }) => (<p key={id}>{joke}</p>))}
         </span>
 
-      <span>RENDERIZAÇÃO CONDICIONAL</span>
-
+      {/* <span>RENDERIZAÇÃO CONDICIONAL</span> */}
+      {/* <p>{ jokeObj ? jokeObj.joke : loadingElement }</p> */}
+      <p>{ loading ? loadingElement : this.renderJokeElement() }</p> 
       </div>
     );
   }

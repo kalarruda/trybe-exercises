@@ -14,6 +14,7 @@ class App extends Component {
       fetch('https://rickandmortyapi.com/api/character')
       .then(response => response.json())
       .then(data => {
+        console.log(data);
         this.setState({characters: data.results})
       })
     }
@@ -31,6 +32,8 @@ class App extends Component {
               <div className="container" key={character.name}>
                 <h3>{character.name}</h3>
                 <img src={character.image} alt={character.name}/>
+                <h4>{ character.origin.name }</h4>
+                <h4>{character.status}</h4>
               </div>
             )
           })}
