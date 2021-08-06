@@ -4,7 +4,7 @@ class HomeFooter extends React.Component {
   render() {
     return (
       <footer className="footer-content">
-        Desenvolvido Com Amor e Carinho Pela T-12
+        kal arruda - 2021
       </footer>
     );
   }
