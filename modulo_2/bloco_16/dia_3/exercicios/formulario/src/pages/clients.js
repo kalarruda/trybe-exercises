@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { actionDelete } from '../redux/actions/actionLogin';
 import { Link } from 'react-router-dom';
 
 class Clients extends React.Component {
   render() {
-    const { funcionario, clients } = this.props;
+    const { funcionario, clients, deleteRegister } = this.props;
     if (clients.length === 0) {
       return(
       <div>
@@ -31,6 +32,7 @@ class Clients extends React.Component {
             <p><strong>Nome:</strong>{client.name}</p>
             <p><strong>Idade:</strong> {client.age}</p>
             <p><strong>Email:</strong>{client.email}</p>
+            <button onClick={ () => deleteRegister(client) } >X</button>
           </div>
            )}
         <Link to="/register" >
@@ -44,6 +46,10 @@ class Clients extends React.Component {
 const mapStateToProps = (state) => ({
   funcionario: state.addInfo,
   clients: state.addRegister,
-})
+});
 
-export default connect(mapStateToProps)(Clients);
+const mapDispatchToProps = (dispatch) => ({
+  deleteRegister: (value) => dispatch(actionDelete(value)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Clients);
