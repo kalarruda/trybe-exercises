@@ -1,21 +1,42 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { actionDelete } from '../redux/actions/actionLogin';
 import { Link } from 'react-router-dom';
 
 class Clients extends React.Component {
   render() {
-    const { funcionario, cliente } = this.props;
+    const { funcionario, clients, deleteRegister } = this.props;
+    if (clients.length === 0) {
+      return(
+      <div>
+        <h2>CLIENTES CADASTRADOS</h2>
+        <p>Bem vindo: { funcionario.email }</p>
+        <p>Senha: { funcionario.password }</p>
+        <hr/>
+        <h3>Nenhum Cliente Cadastrado</h3>
+        <Link to="/register" >
+          <button>Cadastrar Cliente</button>
+        </Link>
+      </div>)
+    }
     return(
       <div>
         <h2>CLIENTES CADASTRADOS</h2>
-        <p>Olá: { funcionario.email }</p>
+        <p>Bem vindo: { funcionario.email }</p>
         <p>Senha: { funcionario.password }</p>
-        <h3>Clientes</h3>
-        <p>Nome: {cliente.name}</p>
-        <p>Idade: {cliente.age}</p>
-        <p>Email: {cliente.email}</p>
+        <hr/>
+          <h3>Clientes</h3>
+          { clients.map((client, index) => 
+          <div key={ client.index } >
+            <p><strong>ID:</strong>{index + 1}</p>
+            <p><strong>Nome:</strong>{client.name}</p>
+            <p><strong>Idade:</strong> {client.age}</p>
+            <p><strong>Email:</strong>{client.email}</p>
+            <button onClick={ () => deleteRegister(client) } >X</button>
+          </div>
+           )}
         <Link to="/register" >
-          <button>ENTRE</button>
+          <button>Cadastrar Cliente</button>
         </Link>
       </div>
     );
@@ -24,7 +45,11 @@ class Clients extends React.Component {
 
 const mapStateToProps = (state) => ({
   funcionario: state.addInfo,
-  cliente: state.addRegister,
-})
+  clients: state.addRegister,
+});
 
-export default connect(mapStateToProps)(Clients);
+const mapDispatchToProps = (dispatch) => ({
+  deleteRegister: (value) => dispatch(actionDelete(value)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Clients);

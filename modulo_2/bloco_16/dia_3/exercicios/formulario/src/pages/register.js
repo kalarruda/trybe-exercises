@@ -15,23 +15,22 @@ class Register extends Component {
       email: '',
     };
 
-    // this.validateClient = this.validateClient.bind(this);
+    this.validateClient = this.validateClient.bind(this);
   }
 
-  // validateClient = () => {
-  //   const { name, email, age } = this.state;
-  //   // const { getRegister } = this.props;
-  //   this.props.getRegister({ name, email, age });
-  //   this.setState({
-  //     name: '',
-  //     age: '',
-  //     email: '',
-  //   });
-  // }
+  validateClient = () => {
+    const { name, email, age } = this.state;
+    const { getRegister } = this.props;
+    getRegister({ name, email, age });
+    this.setState({
+      name: '',
+      email: '',
+      age: '',
+    })
+  }
 
   render() {
     const { name, email, age } = this.state;
-    const { getRegister } = this.props;
     return(
       <div>
 
@@ -51,7 +50,7 @@ class Register extends Component {
           onChange={ (e) => this.setState({ email: e.target.value }) }
           value={ email }
         />
-        <Input 
+        <Input
           type="number"
           name="age"
           label="Idade:"
@@ -61,13 +60,11 @@ class Register extends Component {
       </form>
           <Button
           label="Cadastrar"
-          // onClick={ this.validateClient }
-          onClick={ () => getRegister({ email, name, age }) }
+          onClick={ this.validateClient }
           />
         <Link to="/clients" >
           Clientes
         </Link>
-              
       </div>
     );
   }
