@@ -7,7 +7,7 @@ const REQUEST_IMAGE = 'REQUEST_IMAGE';
 const FAILED_REQUEST = 'FAILED_REQUEST';
 
 function getImage(json) {
-  return { type: GET_IMAGE, payload: json.message };
+  return { type: GET_IMAGE, payload: json };
 }
 
 function requestDog() {
