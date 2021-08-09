@@ -5,7 +5,7 @@ import { fetchDog } from './store/index';
 
 function App({ isFetching, src, fetchDog }) {
   return (
-    isFetching ? <p>Loading</p>
+    isFetching ? <h2>CARREGANDO...</h2>
       : (
         <div style={{ width: 500 }}>
           <button
@@ -22,7 +22,7 @@ function App({ isFetching, src, fetchDog }) {
 }
 
 const mapStateToProps = (state) => ({
-  src: state.imagePath,
+  src: state.imagePath.message,
   isFetching: state.isFetching});
 
 const mapDispatchToProps = (dispatch) => ({

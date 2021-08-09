@@ -12,4 +12,6 @@ export const actionRegister = (payload) => ({
 
 export const actionDelete = (payload) => ({
   type: DELETE_REGISTER, payload,
-})
+});
+
+
