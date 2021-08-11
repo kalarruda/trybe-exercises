@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Input from '../components/Input';
+import { connect } from 'react-redux';
+import { addDataLogin } from '../redux/actions/actionLogin';
 const MIN_LENGHT = 8;
 
 class Login extends Component {
@@ -11,6 +13,7 @@ class Login extends Component {
       password: '',
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange({target: { name, value }}) {
@@ -20,8 +23,9 @@ class Login extends Component {
   }
 
   handleClick() {
-    const { email } = this.state;
-    console.log(email);
+    const { addLogin } = this.props;
+    const { email, password } = this.state;
+    addLogin({email, password})
   }
 
   checkEmail() {
@@ -68,4 +72,8 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+  addLogin: (value) => dispatch(addDataLogin(value)),
+});
+
+export default connect(null, mapDispatchToProps)(Login);
