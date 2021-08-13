@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import { getJokeApi } from '../redux/actions/actionApi';
 
 class Jokes extends Component {
+
+  componentDidMount() {
+    const { getJoke } = this.props;
+    getJoke();
+  }
   render() {
     const { jokes, isLoading, getJoke } = this.props;
     if (isLoading) {
