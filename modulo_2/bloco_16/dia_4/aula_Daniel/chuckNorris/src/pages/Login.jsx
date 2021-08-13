@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Input from '../components/Input';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addDataLogin } from '../redux/actions/actionLogin';
 const MIN_LENGHT = 8;
@@ -25,7 +26,7 @@ class Login extends Component {
   handleClick() {
     const { addLogin } = this.props;
     const { email, password } = this.state;
-    addLogin({email, password})
+    addLogin({email, password});
   }
 
   checkEmail() {
@@ -60,13 +61,15 @@ class Login extends Component {
           onChange={ this.handleChange }
           placeholder="Senha"
         />
-        <button
-          type="button"
-          onClick={ this.handleClick }
-          disabled={ !this.checkLogin() }
-        >
-          Entrar
-        </button>
+        <Link to="/jokes">
+          <button
+            type="button"
+            onClick={ this.handleClick }
+            disabled={ !this.checkLogin() }
+          >
+            Entrar
+          </button>
+        </Link>
       </div>
     );
   }
