@@ -4,15 +4,26 @@ import RegisterContext from "../context/Context";
 function FilterRegister() {
   const { register } = useContext(RegisterContext);
 
-  const [filter, setFilter] = useState([]);
+  const [filterName, setFilterName] = useState(''); // precisa ser uma string vazia senão o lowercase na linah 12 nao funciona
+  const [filterAge, setFilterAge] = useState('');
+  const [fiterSex, setFilterSex] = useState('');
+  const [filterState, setFilterState] = useState('');
 
-  const filterInfo = (inputName) => {
-    let filtered = [];
+  const filterInfo = (inputName, inputAge, inputSex, inputState) => {
+    let filtered = [...register];
     if(inputName) {
-      filtered = register.filter(({ nome }) => nome.toLowerCase().includes(inputName.toLowerCase()));
-      return filtered;
+      filtered = filtered.filter(({ nome }) => (nome.toLowerCase().includes(inputName.toLowerCase())));
     }
-    return register;
+    if(inputAge) {
+      filtered = filtered.filter(({ idade }) => idade === inputAge);
+    }
+    if(inputSex) {
+      filtered = filtered.filter(({ sexo }) => (sexo.toLowerCase().includes(inputSex)));
+    }
+    if(inputState) {
+      filtered = filtered.filter(({ estado }) => estado === inputState)
+    }
+    return filtered;
   }
 
   return(
@@ -24,38 +35,39 @@ function FilterRegister() {
           name="nome"
           id="nome"
           type="text"
-          onChange={ ({target: { value }}) => setFilter(value) }
-          value={ filter }
+          onChange={ ({target: { value }}) => setFilterName(value) }
+          value={ filterName }
         />
       </label>
-      {/* 
       <label htmlFor="idade">
         Idade
         <input
           name="idade"
           id="idade"
           type="number"
-          onChange={ ({target: { value }}) => setFilter(value) }
-          // value={ idade }
+          onChange={ ({target: { value }}) => setFilterAge(value) }
+          value={ filterAge }
         />
       </label>
-      <label htmlFor="sexo" >
+      <label htmlFor="sexo">
         Sexo
-        <select id="sexo" onChange={ ({target: { value }}) => setFilter(value) } name="sexo">
+        <select id="sexo" value={ fiterSex } onChange={ ({target: { value }}) => setFilterSex(value) } name="sexo">
+          <option value="selecione">Selecione</option>
           <option value="masculino">Masculino</option>
           <option value="feminino">Feminino</option>
         </select>
       </label>
       <label htmlFor="estado">
         Estado
-        <select id="estado" onChange={ ({target: { value }}) => setFilter(value) } name="estado" >
+        <select id="estado" value={ filterState } onChange={ ({target: { value }}) => setFilterState(value) } name="estado" >
+        <option value="selecione">Selecione</option>
           <option value="AL">AL</option>
           <option value="PR">PR</option>
           <option value="RJ">RJ</option>
         </select>
-      </label> */}
+      </label>
     </form>
-     { filterInfo(filter).map(({ nome, idade, estado, sexo }, index ) => (
+     { filterInfo(filterName, filterAge, fiterSex, filterState).map(({ nome, idade, estado, sexo }, index ) => (
        <ul>
         <li key={ index }>
           <spam>{` NOME: ${ nome } - `}</spam>
