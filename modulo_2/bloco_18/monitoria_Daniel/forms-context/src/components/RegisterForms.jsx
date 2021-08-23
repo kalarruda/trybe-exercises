@@ -56,9 +56,10 @@ function RegisterForms() {
           value={ idade }
         />
       </label>
-      <label htmlFor="sexo" value={ sexo }>
+      <label htmlFor="sexo">
         Sexo
-        <select id="sexo" onChange={ handleChange } name="sexo">
+        <select id="sexo" onChange={ handleChange } name="sexo" value={ sexo }>
+          <option value="selecione">Selecione</option>
           <option value="masculino">Masculino</option>
           <option value="feminino">Feminino</option>
         </select>
@@ -66,6 +67,7 @@ function RegisterForms() {
       <label htmlFor="estado">
         Estado
         <select id="estado" onChange={ handleChange } name="estado" value={ estado }>
+          <option value="selecione">Selecione</option>
           <option value="AL">AL</option>
           <option value="PR">PR</option>
           <option value="RJ">RJ</option>
