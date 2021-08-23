@@ -3,8 +3,8 @@ import { useState } from 'react';
 
 
 function Provider({ children }) {
-  const [state, setState] = useState([]);
-  const context = { state, setState };
+  const [characters, setCharacters] = useState([]);
+  const context = { characters, setCharacters };
   
   return(
     <GameContext.Provider value={ context }>
