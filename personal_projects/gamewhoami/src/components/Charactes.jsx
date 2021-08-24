@@ -1,22 +1,33 @@
-import { useContext, useState } from "react";
-import GameContext from "../context/GameContext";
+// import { useContext, useState } from "react";
+// import GameContext from "../context/GameContext";
 
-function Characters() {
+// function Characters() {
+//   const { characters } = useContext(GameContext);
+//   // const { olhos, pele } = characters;
+//   const { filterEyes, filterSkin } = useContext(GameContext);
 
-  const { characters, setCharacters } = useContext(GameContext);
+//   const filterCharacters = (inputEyes, inputSkin) => {
+//     let filtered=[...characters];
+//     if(inputEyes) {
+//       filtered = filtered.filter(({ olhos }) => olhos === inputEyes)
+//     }
+//     if(inputSkin) {
+//       filtered = filtered.filter(({ pele }) => pele === inputSkin)
+//     }
+//     return filtered;
+//   }
 
-  console.log(characters)
-  return(
-    <div>
-      <div>
-        {characters.map(({ nome, olhos, pele }, index) => (
-          <div key={index}>
-            <br></br>
-            <spam>{nome} {olhos} {pele}</spam>
-          </div>))}
-      </div>
-    </div>
-  )
-}
+//   return(
+//     <div>
+//       <div>
+//         {filterCharacters(filterEyes, filterSkin).map(({ nome, olhos, pele }, index) => (
+//           <div key={index}>
+//             <br></br>
+//             <spam>{ `NOME: ${nome} - OLHOS: ${olhos} - PELE: ${pele}` }</spam>
+//           </div>))}
+//       </div>
+//     </div>
+//   )
+// }
 
-export default Characters;
+// export default Characters;

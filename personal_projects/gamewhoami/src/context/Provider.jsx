@@ -1,9 +1,8 @@
 import GameContext from './GameContext';
 import { useState } from 'react';
 
-
 function Provider({ children }) {
-  const [characters, setCharacters] = useState([
+  const characters = [
     { 
     nome: 'José',
     olhos: 'claros',
@@ -21,8 +20,8 @@ function Provider({ children }) {
     olhos: 'escuros',
     pele: 'escura',
   },
-  ]);
-  const context = { characters, setCharacters };
+  ];
+  const context = { characters };
   
   return(
     <GameContext.Provider value={ context }>

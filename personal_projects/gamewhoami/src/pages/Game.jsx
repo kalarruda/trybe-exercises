@@ -9,7 +9,7 @@ function Game() {
   return(
     <div>
       <Selects />
-      <Characters />
+      {/* <Characters /> */}
     </div>
 
   )
