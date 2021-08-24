@@ -1,5 +1,4 @@
 import GameContext from './GameContext';
-import { useState } from 'react';
 
 function Provider({ children }) {
   const characters = [
