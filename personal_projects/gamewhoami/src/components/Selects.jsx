@@ -6,6 +6,7 @@ function Selects() {
   const [filterSkin, setFilterSkin] = useState({ pele: '' });
   const [filterHat, setFilterHat] = useState({ chapeu: '' });
   const [filterSex, setFilterSex] = useState({ sexo: '' });
+  const [filterHair, setFilterHair] = useState({ cabelo: ''});
 
   const { characters } = useContext(GameContext);
   
@@ -14,6 +15,7 @@ function Selects() {
     const { pele } = filterSkin;
     const { chapeu } = filterHat;
     const { sexo } = filterSex;
+    const { cabelo } =filterHair;
     let filtered=[...characters];
       if(olhos !== '') {
         filtered = filtered.filter(({ olhos }) => olhos === filterEyes.olhos)
@@ -26,6 +28,9 @@ function Selects() {
       }
       if(sexo !== '') {
         filtered = filtered.filter(({ sexo }) => sexo === filterSex.sexo);
+      }
+      if(cabelo !== ''){
+        filtered = filtered.filter(({ cabelo }) => cabelo === filterHair.cabelo);
       }
     return filtered;
   }
@@ -64,12 +69,12 @@ function Selects() {
           <option value="feminino">Feminino</option>
         </select>
       </label>
-      <label htmlFor="chapeu">
-        Chapéu:
-        <select id="chapeu" name="chapeu" value={ filterHat.chapeu } onChange={ ({ target: { value } }) => setFilterHat({ chapeu: value }) }>
-          <option value="">Possui</option>
-          <option value="sim">Sim</option>
-          <option value="nao">Não</option>
+      <label htmlFor="cabelo">
+        Cabelo:
+        <select id="cabelo" name="cabelo" value={ filterHair.cabelo } onChange={ ({ target: { value } }) => setFilterHair({ cabelo: value }) }>
+          <option value="">Cor</option>
+          <option value="castanho">Castanho</option>
+          <option value="loiro">Loiro</option>
         </select>
       </label>
       <div>
