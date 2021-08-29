@@ -1,10 +1,12 @@
-import { useContext, useState } from "react";
-import GameContext from "../context/GameContext";
+// import { useContext, useState } from "react";
+// import GameContext from "../context/GameContext";
 
-function FilterCharacters() {
-  return(
+// function FilterCharacters() {
+  
+//   return(
 
-  )
-}
 
-export default FilterCharacters;
+//   )
+// }
+
+// export default FilterCharacters;
