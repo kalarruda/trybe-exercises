@@ -6,18 +6,27 @@ function Provider({ children }) {
     nome: 'José',
     olhos: 'claros',
     pele: 'clara',
+    chapeu: 'sim',
+    sexo: 'masculino',
+    cabelo: 'castanho',
   },
 
    {
     nome: 'Giselle',
     olhos: 'escuros',
     pele: 'clara',
+    chapeu: 'nao',
+    sexo: 'feminino',
+    cabelo: 'castanho',
   },
 
   {
     nome: 'Cintia',
     olhos: 'escuros',
     pele: 'escura',
+    chapeu: 'sim',
+    sexo: 'feminino',
+    cabelo: 'loiro',
   },
   ];
   const context = { characters };
