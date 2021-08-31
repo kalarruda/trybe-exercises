@@ -8,8 +8,18 @@ function Selects() {
   const [filterSex, setFilterSex] = useState({ sexo: '' });
   const [filterHair, setFilterHair] = useState({ cabelo: ''});
 
-  const { characters } = useContext(GameContext);
+//   const [ state, setState] =useState(["RJ", "MG", "SP", "SC", "SP", "SP", "PR", "PE", "PA"])
+//   const [buscar, setBuscar] = useState('')
+
+// let indice = state.indexOf(buscar); // 2
+// if(indice >= 0){
+  //   state.splice(indice, 1);
+  //   setState(state)
+  // }
+  // console.log(state);
   
+    const { characters } = useContext(GameContext);
+
   const filterCharacters = () => {
     const { olhos } = filterEyes;
     const { pele } = filterSkin;
