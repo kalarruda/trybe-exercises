@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import GameContext from "../context/GameContext";
+import woman1 from '../images/woman1.jpg';
 
 function Selects() {
   const [filterEyes, setFilterEyes] = useState({ olhos: '' });
@@ -89,10 +90,11 @@ function Selects() {
       </label>
       <div>
         <div>
-          {filterCharacters().map(({ nome, olhos, pele, chapeu, sexo, cabelo }, index) => (
+          {filterCharacters().map(({ nome, olhos, pele, chapeu, sexo, cabelo, src }, index) => (
             <div key={index}>
               <br></br>
-              <spam>{ `NOME: ${nome} - OLHOS: ${olhos} - PELE: ${pele} - CHAPEU: ${chapeu} - SEXO: ${sexo} - CABELO: ${cabelo}` }</spam>
+              <spam>{ `NOME: ${nome} - OLHOS: ${olhos} - PELE: ${pele} - CHAPEU: ${chapeu} - SEXO: ${sexo} - CABELO: ${cabelo}` }
+              <img src={ src } alt={ nome }/></spam>
             </div>))}
         </div>
       </div>
