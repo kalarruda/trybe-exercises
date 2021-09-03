@@ -1,6 +1,6 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import GameContext from "../context/GameContext";
-import woman1 from '../images/woman1.jpg';
+import '../App.css';
 
 function Selects() {
   const [filterEyes, setFilterEyes] = useState({ olhos: '' });
@@ -8,6 +8,8 @@ function Selects() {
   const [filterHat, setFilterHat] = useState({ chapeu: '' });
   const [filterSex, setFilterSex] = useState({ sexo: '' });
   const [filterHair, setFilterHair] = useState({ cabelo: ''});
+  const [randomCharacter, setRandomCharacter] = useState();
+  const [filteredCharacter, setFilteredCharacter] = useState();
 
 //   const [ state, setState] =useState(["RJ", "MG", "SP", "SC", "SP", "SP", "PR", "PE", "PA"])
 //   const [buscar, setBuscar] = useState('')
@@ -29,7 +31,7 @@ function Selects() {
     const { cabelo } =filterHair;
     let filtered=[...characters];
       if(olhos !== '') {
-        filtered = filtered.filter(({ olhos }) => olhos === filterEyes.olhos)
+        filtered = filtered.filter(({ olhos }) => olhos === filterEyes.olhos) // trocar por switch
       }
       if(pele !== '') {
         filtered = filtered.filter(({ pele }) => pele === filterSkin.pele)
@@ -43,7 +45,36 @@ function Selects() {
       if(cabelo !== ''){
         filtered = filtered.filter(({ cabelo }) => cabelo === filterHair.cabelo);
       }
+      // setFilteredCharacter(filtered);
     return filtered;
+  }
+
+  console.log(filterCharacters());
+
+  const getRandom = () => {
+    let random = characters[Math.floor(Math.random() * characters.length)];
+    return setRandomCharacter(random);
+  }
+  
+  useEffect(() => { // usei para quando página atualizar
+    getRandom();
+  },[]);
+
+  // const imageCharacter = () => {
+  //   if(randomCharacter) { // se estiver true retorna algo senão não retorna nada
+  //     if(randomCharacter.nome !== filteredCharacter.nome) { 
+  //       return (<spam>{ `NOME: ${randomCharacter.nome}` }
+  //       <img className="image-character" src={ randomCharacter.src } alt="imagem" /></spam>)
+  //     }
+  //     console.log('ganhou')
+  //   }
+  // }
+
+  const imageCharacter = () => {
+    if(randomCharacter) { // se estiver true retorna algo senão não retorna nada
+      return (<spam>{ `NOME: ${randomCharacter.nome}` }
+      <img className="image-character" src={ randomCharacter.src } alt="imagem" /></spam>)
+    }
   }
 
   return(
@@ -94,9 +125,15 @@ function Selects() {
             <div key={index}>
               <br></br>
               <spam>{ `NOME: ${nome} - OLHOS: ${olhos} - PELE: ${pele} - CHAPEU: ${chapeu} - SEXO: ${sexo} - CABELO: ${cabelo}` }
-              <img src={ src } alt={ nome }/></spam>
+              <img className="image-character" src={ src } alt={ nome }/></spam>
             </div>))}
         </div>
+        <section>
+          SUA CARTA
+          <spam>
+          { imageCharacter() }
+          </spam>
+        </section>
       </div>
     </section>
   )

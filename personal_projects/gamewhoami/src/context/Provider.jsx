@@ -1,7 +1,8 @@
 import GameContext from './GameContext';
 import woman1  from '../images/woman1.jpg';
 import woman2  from '../images/woman2.jpg';
-// import man from '../images/man.jpg'
+import man from '../images/man.jpg'
+
 
 function Provider({ children }) {
   const characters = [
@@ -12,7 +13,7 @@ function Provider({ children }) {
     chapeu: 'sim',
     sexo: 'masculino',
     cabelo: 'castanho',
-    src: 'images/man.jpg',
+    src: man,
   },
   
   {
