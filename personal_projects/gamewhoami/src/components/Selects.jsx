@@ -45,11 +45,11 @@ function Selects() {
       if(cabelo !== ''){
         filtered = filtered.filter(({ cabelo }) => cabelo === filterHair.cabelo);
       }
-      // setFilteredCharacter(filtered);
+      // setFilteredCharacter(filtered[0].nome)
+      // console.log('PEEEEELE',filtered[0].nome)
     return filtered;
   }
-
-  console.log(filterCharacters());
+  console.log(filterCharacters().length)
 
   const getRandom = () => {
     let random = characters[Math.floor(Math.random() * characters.length)];
@@ -74,6 +74,17 @@ function Selects() {
     if(randomCharacter) { // se estiver true retorna algo senão não retorna nada
       return (<spam>{ `NOME: ${randomCharacter.nome}` }
       <img className="image-character" src={ randomCharacter.src } alt="imagem" /></spam>)
+    }
+  }
+
+  const compareCharacter = () => {
+    if(randomCharacter !== null && filterCharacters().length === 1) { // se estiver true retorna algo senão não retorna nada
+      console.log(randomCharacter.nome)
+      if(randomCharacter.nome === filterCharacters()[0].nome) {
+        console.log('VOCE GANHOU')
+        console.log(filterCharacters()[0].nome)
+        return (<h1>VOCE GANHOU</h1>);
+      }
     }
   }
 
@@ -132,6 +143,7 @@ function Selects() {
           SUA CARTA
           <spam>
           { imageCharacter() }
+          { compareCharacter() }
           </spam>
         </section>
       </div>
