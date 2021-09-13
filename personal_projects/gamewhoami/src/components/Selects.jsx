@@ -60,23 +60,13 @@ function Selects() {
     getRandom();
   },[]);
 
-  // const imageCharacter = () => {
-  //   if(randomCharacter) { // se estiver true retorna algo senão não retorna nada
-  //     if(randomCharacter.nome !== filteredCharacter.nome) { 
-  //       return (<spam>{ `NOME: ${randomCharacter.nome}` }
-  //       <img className="image-character" src={ randomCharacter.src } alt="imagem" /></spam>)
-  //     }
-  //     console.log('ganhou')
-  //   }
-  // }
-
   const imageCharacter = () => {
     if(randomCharacter) { // se estiver true retorna algo senão não retorna nada
       return (<spam>{ `NOME: ${randomCharacter.nome}` }
       <img className="image-character" src={ randomCharacter.src } alt="imagem" /></spam>)
     }
   }
-
+  
   const compareCharacter = () => {
     if(randomCharacter !== null && filterCharacters().length === 1) { // se estiver true retorna algo senão não retorna nada
       console.log(randomCharacter.nome)
