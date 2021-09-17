@@ -1,5 +1,6 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import GameContext from "../context/GameContext";
+import '../App.css';
 
 function Selects() {
   const [filterEyes, setFilterEyes] = useState({ olhos: '' });
@@ -7,9 +8,21 @@ function Selects() {
   const [filterHat, setFilterHat] = useState({ chapeu: '' });
   const [filterSex, setFilterSex] = useState({ sexo: '' });
   const [filterHair, setFilterHair] = useState({ cabelo: ''});
+  const [randomCharacter, setRandomCharacter] = useState();
+  const [filteredCharacter, setFilteredCharacter] = useState();
 
-  const { characters } = useContext(GameContext);
+//   const [ state, setState] =useState(["RJ", "MG", "SP", "SC", "SP", "SP", "PR", "PE", "PA"])
+//   const [buscar, setBuscar] = useState('')
+
+// let indice = state.indexOf(buscar); // 2
+// if(indice >= 0){
+  //   state.splice(indice, 1);
+  //   setState(state)
+  // }
+  // console.log(state);
   
+    const { characters } = useContext(GameContext);
+
   const filterCharacters = () => {
     const { olhos } = filterEyes;
     const { pele } = filterSkin;
@@ -18,7 +31,7 @@ function Selects() {
     const { cabelo } =filterHair;
     let filtered=[...characters];
       if(olhos !== '') {
-        filtered = filtered.filter(({ olhos }) => olhos === filterEyes.olhos)
+        filtered = filtered.filter(({ olhos }) => olhos === filterEyes.olhos) // trocar por switch
       }
       if(pele !== '') {
         filtered = filtered.filter(({ pele }) => pele === filterSkin.pele)
@@ -32,7 +45,37 @@ function Selects() {
       if(cabelo !== ''){
         filtered = filtered.filter(({ cabelo }) => cabelo === filterHair.cabelo);
       }
+      // setFilteredCharacter(filtered[0].nome)
+      // console.log('PEEEEELE',filtered[0].nome)
     return filtered;
+  }
+  console.log(filterCharacters().length)
+
+  const getRandom = () => {
+    let random = characters[Math.floor(Math.random() * characters.length)];
+    return setRandomCharacter(random);
+  }
+  
+  useEffect(() => { // usei para quando página atualizar
+    getRandom();
+  },[]);
+
+  const imageCharacter = () => {
+    if(randomCharacter) { // se estiver true retorna algo senão não retorna nada
+      return (<spam>{ `NOME: ${randomCharacter.nome}` }
+      <img className="image-character" src={ randomCharacter.src } alt="imagem" /></spam>)
+    }
+  }
+  
+  const compareCharacter = () => {
+    if(randomCharacter !== null && filterCharacters().length === 1) { // se estiver true retorna algo senão não retorna nada
+      console.log(randomCharacter.nome)
+      if(randomCharacter.nome === filterCharacters()[0].nome) {
+        console.log('VOCE GANHOU')
+        console.log(filterCharacters()[0].nome)
+        return (<h1>VOCE GANHOU</h1>);
+      }
+    }
   }
 
   return(
@@ -79,12 +122,20 @@ function Selects() {
       </label>
       <div>
         <div>
-          {filterCharacters().map(({ nome, olhos, pele, chapeu, sexo, cabelo }, index) => (
+          {filterCharacters().map(({ nome, olhos, pele, chapeu, sexo, cabelo, src }, index) => (
             <div key={index}>
               <br></br>
-              <spam>{ `NOME: ${nome} - OLHOS: ${olhos} - PELE: ${pele} - CHAPEU: ${chapeu} - SEXO: ${sexo} - CABELO: ${cabelo}` }</spam>
+              <spam>{ `NOME: ${nome} - OLHOS: ${olhos} - PELE: ${pele} - CHAPEU: ${chapeu} - SEXO: ${sexo} - CABELO: ${cabelo}` }
+              <img className="image-character" src={ src } alt={ nome }/></spam>
             </div>))}
         </div>
+        <section>
+          SUA CARTA
+          <spam>
+          { imageCharacter() }
+          { compareCharacter() }
+          </spam>
+        </section>
       </div>
     </section>
   )

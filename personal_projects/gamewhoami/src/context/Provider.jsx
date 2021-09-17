@@ -1,4 +1,8 @@
 import GameContext from './GameContext';
+import woman1  from '../images/woman1.jpg';
+import woman2  from '../images/woman2.jpg';
+import man from '../images/man.jpg'
+
 
 function Provider({ children }) {
   const characters = [
@@ -9,17 +13,19 @@ function Provider({ children }) {
     chapeu: 'sim',
     sexo: 'masculino',
     cabelo: 'castanho',
+    src: man,
   },
-
-   {
+  
+  {
     nome: 'Giselle',
-    olhos: 'escuros',
+    olhos: 'claros',
     pele: 'clara',
     chapeu: 'nao',
     sexo: 'feminino',
     cabelo: 'castanho',
+    src: woman1,
   },
-
+  
   {
     nome: 'Cintia',
     olhos: 'escuros',
@@ -27,6 +33,7 @@ function Provider({ children }) {
     chapeu: 'sim',
     sexo: 'feminino',
     cabelo: 'loiro',
+    src: woman2,
   },
   ];
   const context = { characters };
