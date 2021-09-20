@@ -75,5 +75,33 @@ SELECT T.name, T.location FROM Pixar.Theater AS T
 );
 -- Exercício 9: Utilizando o EXISTS , selecione o nome e localização dos cinemas que não possuem filmes em cartaz.
 
+SELECT * FROM Pixar.Movies AS M
+INNER JOIN Pixar.BoxOffice AS BO
+ON M.id = BO.movie_id
+WHERE BO.rating > 8 AND M.theater_id IS NOT NUll;
+-- Exercício 10: Utilizando o INNER JOIN , selecione todas as informações dos filmes com avaliação maior que 8 e que estejam em cartaz.
+
+SELECT t1.title, t1.length_minutes, t1.director
+FROM Pixar.Movies AS t1, Pixar.Movies AS t2
+WHERE t1.director = t2.director AND t1.title <> t2.title;
+
+SELECT t1.title, t1.length_minutes, t1.director
+FROM Pixar.Movies AS t1, Pixar.Movies AS t2
+WHERE t1.director = t2.director; -- NÃO ENTENDI ===================================
+-- Exercício 11: Utilizando o SELF JOIN , selecione os títulos e duração dos filmes que possuem o mesmo diretor.
+
+SELECT * FROM Pixar.BoxOffice;
+SELECT M.title FROM Pixar.Movies AS M
+INNER JOIN Pixar.BoxOffice AS BO
+ON BO.movie_id = M.id
+WHERE BO.international_sales > 500000000 AND M.length_minutes > 110;
+
+SELECT M.title FROM Pixar.Movies AS M
+WHERE M.id IN(
+	SELECT movie_id FROM Pixar.BoxOffice
+	WHERE international_sales > 500000000 AND length_minutes > 110
+);
+-- Exercício 12: Faça duas buscas, uma utilizando SUBQUERY e outra utilizando INNER JOIN , que retornem o título dos filmes que 
+-- arrecadaram 500 milhões ou mais, e que possuem duração maior que 110 minutos.
 
 
