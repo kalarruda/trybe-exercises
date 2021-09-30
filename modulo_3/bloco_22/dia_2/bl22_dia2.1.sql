@@ -30,21 +30,24 @@ INSERT INTO funcionario VALUES
     (14, 'Cíntial', 'Duval', 'cindy@outlook.com', '(33)99855-4669', '2020-05-05 10:55:35'),
     (15, 'Fernanda', 'Mendes', 'fernandamendes@yahoo.com', '(33)99200-1556', '2020-05-05 11:45:40');
 
-INSERT INTO setor(nome) VALUES
-    ('Administração'),
-    ('Operacional'),
-    ('Estratégico'),
-    ('Marketing'),
-    ('Vendas');
+INSERT INTO setor(setor_id, nome) VALUES
+    (1,'Administração'),
+    (2,'Operacional'),
+    (3,'Estratégico'),
+    (4,'Marketing'),
+    (5, 'Vendas');
 
-SELECT * FROM setor;
--- DELETE FROM setor WHERE setor_id BETWEEN 5 AND 8; 
+SELECT * FROM normalization.funcionario;
+-- DELETE FROM setor WHERE setor_id BETWEEN 9 AND 13;
 INSERT INTO setor_funcionario VALUES
     (1, 12),
+    (5, 12),
     (2, 13),
     (3, 14),
+    (5, 14),
     (4, 15);
-
+    
+DELETE FROM setor_funcionario WHERE setor_id BETWEEN 1 AND 4; 
 SELECT S.nome AS 'Setor', F.nome AS 'Funcionario' FROM normalization.setor_funcionario AS SF
 INNER JOIN normalization.setor AS S ON S.setor_id = SF.setor_id
 INNER JOIN normalization.funcionario AS F ON F.funcionario_id = SF.funcionario_id  ;
