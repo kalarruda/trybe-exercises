@@ -8,12 +8,12 @@ DROP INDEX index_first_name ON sakila.actor;
 -- para testar a velocidade de pesquisa do index
 SELECT * FROM sakila.actor WHERE first_name='RITA';
 
--- para criar um FULLTEXT index na tabela address
 -- para CRIAR UM FULLTEXT INDEX E ACHAR O TEXT MAIS RÁPIDO
 CREATE FULLTEXT INDEX index_address ON sakila.address(address);
 
 -- COMO USAR A BUSCA DO FULLTEXT INDEX
-SELECT * FROM sakila.address WHERE MATCH(address) AGAINST('drive');
+SELECT address, MATCH(address) AGAINST('driver') AS 'relevância'
+FROM sakila.address WHERE MATCH(address) AGAINST('MySakila Drive');
 
 SELECT * FROM sakila.address WHERE address LIKE '%drive%'; 
 
