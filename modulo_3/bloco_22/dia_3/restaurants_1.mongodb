@@ -1,0 +1,19 @@
+use ('restaurants');
+db.restaurants.find({borough: {$in: ["Queens", "Staten Island", "Bronx" ] }}).count();
+// Selecione e faça a contagem dos restaurantes presentes nos bairros Queens , Staten Island e Bronx . (utilizando o atributo borough )
+
+use ('restaurants');
+db.restaurants.count({cuisine: "American"});
+// Selecione e faça a contagem dos restaurantes que não possuem culinária do tipo American . (utilizando o atributo cuisine )
+
+use("restaurants");
+db.restaurants.count({rating: {$gt: 8}});
+// Selecione e faça a contagem dos restaurantes que possuem avaliação maior ou igual a 8 . (utilizando o atributo rating )
+
+use("restaurants");
+db.restaurants.count({rating: {$lt: 4}});
+// Selecione e faça a contagem dos restaurantes que possuem avaliação menor que 4 .
+
+use('restaurants');
+db.restaurants.find({rating: {$nin: [5, 6, 7]}}).count();
+// Selecione e faça a contagem dos restaurantes que não possuem as avaliações 5 , 6 e 7 .

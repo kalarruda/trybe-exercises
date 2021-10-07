@@ -1,0 +1,21 @@
+use('restaurants');
+db.restaurants.find({}, {name: 1, _id: 0}).sort({"name": 1});
+// Ordene alfabeticamente os restaurantes pelo nome (atributo name ).
+
+use('restaurants');
+db.restaurants.find({}, {rating: 1, _id: 0}).sort({rating: -1});
+// Ordene os restaurantes de forma descrescente baseado nas avaliações.
+
+use('restaurants');
+db.restaurants.find({ $or: [
+  {borough: "Bronx"},
+  {borough: "Brooklyn"}
+  ]}).count();
+
+use('restaurants');
+db.restaurants.find({ borough: {$in: [
+  "Bronx", "Brooklyn"
+  ]}}).count();
+
+use('restaurants');
+db.restaurants.find({_id: ObjectId("615a0dc8d9d012a1a1ef3946") });
