@@ -1,0 +1,62 @@
+
+use ('conteudo_trybe');
+db.inventory.updateOne(
+  { item: "paper" },
+  { $set: { "size.uom": "cm", status: "Perdido" } }
+  );
+
+use ('conteudo_trybe');
+db.inventory.updateMany(
+  { qty: { $lt: 50 } },
+  { $set: { "size.uom": "in", status: "P" } }
+);
+
+use ('conteudo_trybe');
+db.inventory.find({ qty: { $lt: 50 } });
+
+use ('conteudo_trybe');
+db.products.insertOne({
+  _id: 100,
+  sku: "abc123",
+  quantity: 250,
+  instock: true,
+  reorder: false,
+  details: { model: "14Q2", make: "xyz" },
+  tags: [ "apparel", "clothing" ],
+  ratings: [ { by: "ijk", rating: 4 } ]
+})
+
+use ('conteudo_trybe');
+db.products.update(
+  { _id: 100 },
+  { $set: {
+    quantity: 500,
+    details: { 
+      model: "14q3",
+      make: "xues",
+      },
+    tags: [ "clothing", "apparel", "clothing" ]
+  } }
+);
+
+use ('conteudo_trybe');
+db.products.update(
+  { _id: 100 },
+  { $set: {
+      "tags.1": "pijama",
+      "ratings.0.rating": "maluquete",
+    }
+  }
+);
+
+use ('conteudo_trybe');
+db.products.updateOne(
+  {},
+  { $unset: 
+    {"ratings.1": true}
+  })
+
+
+use ('conteudo_trybe');
+db.products.find();
+
