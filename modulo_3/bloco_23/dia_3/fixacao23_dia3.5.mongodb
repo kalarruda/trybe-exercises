@@ -25,3 +25,16 @@ db.articles.find({
   $text: { $search: "\"offee shop\""}
 });
 // PROCURA FRASES
+
+db.invetory.insertMany([
+  { _id: 1, item: "abc123", qty: 0 },
+  { _id: 2, item: "xyz123", qty: 5 },
+  { _id: 3, item: "ijk123", qty: 12 }
+]);
+
+
+db.invetory.find({
+  qty: { $mod: [5, 0]}
+});
+
+db.invetory.find()
