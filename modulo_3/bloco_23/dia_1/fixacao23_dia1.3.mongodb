@@ -1,0 +1,101 @@
+use('conteudo_trybe');
+db.increment.insertOne(
+  {
+    _id: 1,
+    sku: "abc123",
+    quantity: 10,
+    metrics: {
+      orders: 2,
+      ratings: 3.5
+    }
+  }
+)
+// OPERADOR $INC, INCREMENTA OU DECREMENTA (1, -1)
+use('conteudo_trybe');
+db.increment.update(
+  { sku: "abc123" },
+  { $inc: { quantity: -2, "metrics.orders": 1 } }
+);
+
+use('conteudo_trybe');
+db.increment.update(
+  { sku: "abc123"},
+  { $set: 
+    { campos:{
+      campo: 100 }
+    }
+  }
+);
+
+use('conteudo_trybe');
+db.increment.update(
+  { sku: "cda321"},
+  { $set: 
+    { campos:{
+      campo: 25 }
+    }
+  }
+);
+
+use('conteudo_trybe');
+db.increment.find();
+
+use('conteudo_trybe');
+db.tags.insertOne(
+  {
+    _id: 1,
+    desc: "crafts",
+    dateEntered: ISODate("2019-10-01T05:00:00Z"),
+    dateExpired: ISODate("2019-10-01T16:38:16Z")
+  }
+);
+
+use('conteudo_trybe');
+db.tags.update(
+  { _id: 1 },
+  {
+    $min: { dateEntered: new Date("2019-09-25") },
+    $max: { dateExpired: new Date("2019-10-02") }
+  }
+);
+
+use('conteudo_trybe');
+db.customers.insertOne(
+  { _id: 1, status: "a", lastModified: ISODate("2013-10-02T01:11:18.965Z") }
+);
+
+use('conteudo_trybe');
+db.customers.updateOne(
+  { _id: 1 },
+  { $currentDate: {
+      lastModified: true,
+      "cancellation.data": { $type: "timestamp" }
+    }, $set: {
+      "cancellation.reason": "user request",
+      status: "D"
+    }
+  }
+);
+
+use('conteudo_trybe');
+db.customers.find();
+
+use('conteudo_trybe');
+db.fruits.insertOne(
+  { _id: 100, name: "Banana", quantity: 100, inStock: true }
+);
+
+use('conteudo_trybe');
+db.fruits.update(
+  { name: "Banana" },
+  { $rename: { "name": "Fruta" } }
+);
+
+use('conteudo_trybe');
+db.fruits.update(
+  { Fruta: "Banana" },
+  { $unset: { inStock: true } }
+);
+
+use('conteudo_trybe');
+db.fruits.find();
