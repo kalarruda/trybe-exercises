@@ -1,0 +1,23 @@
+db.itens.insertMany([
+  { _id: 100, sku: "abc123", description: "Single line description." },
+{ _id: 101, sku: "abc789", description: "First line\nSecond line" },
+{ _id: 102, sku: "xyz456", description: "Many spaces before     line" },
+{ _id: 103, sku: "xyz789", description: "Multiple\nline description" },
+]);
+
+db.itens.find({
+  sku: { $regex: /789$/ }
+});
+// VOLTA OS QUE TEM FINAL 789
+
+db.itens.find({
+  sku: { $regex: /^ABC/i }
+});
+// VOLTA OS QUE COMEÇAM COM ABC
+
+db.itens.find({
+  description: { $regex: /CrIp/i }
+});
+// RETORNA TODOS QUE TEM "CRIP" NA FRASE NAO IMPORTA TAMANHO FONTE
+
+db.itens.find();
