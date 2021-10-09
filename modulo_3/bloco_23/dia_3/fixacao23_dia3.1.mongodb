@@ -1,0 +1,27 @@
+use('conteudo_trybe');
+db.movies.find(
+  { $and: [
+   { category: "90's"},
+   { category: "action"},
+  ]}
+);
+
+use('conteudo_trybe');
+db.movies.find(
+  { category: {
+    $all: [
+      "90's",
+      "action",
+    ]
+  }}
+);
+
+
+use('conteudo_trybe');
+db.movies.find(
+  {
+    category: {
+      $elemMatch: { $eq: "superhero"},
+    }
+  }
+);
