@@ -1,0 +1,6 @@
+use("test")
+db.articles.find(
+  {score: {$gt: 50, $lt: 80}}
+);
+
+db.articles.find()
