@@ -1,0 +1,52 @@
+use ("agg_example");
+db.transactions.insertMany([
+  { value: 5900, from: "Dave America", to: "Ned Flanders", bank: 'International' },
+  { value: 1000, from: "Mark Zuck", to: "Edna Krabappel", bank: 'FloridaBank' },
+  { value: 209, from: "Lisa Simpson", to: "Dave America", bank: 'bankOfAmerica' },
+  { value: 10800, from: "Arnold Schuz", to: "Mark Zuck", bank: 'JPMorgan' },
+  { value: 850, from: "Barney Gumble", to: "Lisa Simpson", bank: 'Citigroup' },
+  { value: 76000, from: "Ned Flanders", to: "Edna Krabappel", bank: 'JPMorgan' },
+  { value: 1280, from: "Dave America", to: "Homer Simpson", bank: 'Citigroup' },
+  { value: 7000, from: "Arnold Schuz", to: "Ned Flanders", bank: 'International' },
+  { value: 59020, from: "Homer Simpson", to: "Lisa Simpson", bank: 'International' },
+  { value: 100, from: "Mark Zuck", to: "Barney Gumble", bank: 'FloridaBank' },
+]);
+
+use ("agg_example");
+db.transactions.aggregate([
+  { $group: {
+    _id: "$bank",
+    total: { $sum: 1 }
+  }}
+]);
+// Selecione todos os bancos, ou seja, valores do campo bank ;
+
+use ("agg_example");
+db.transactions.aggregate([
+  { $group: {
+    _id: "$bank",
+    total: { $sum: "$value"  },
+    transacoes: { $sum: 1 }
+  }}
+])
+// Selecione o valor total das transações em cada banco e quantas são;
+
+use ("agg_example");
+db.transactions.aggregate([
+  _id: "$bank",
+  count: { $sum: 1 }
+])
+// Selecione o valor total de transações por banco;
+
+use ("agg_example");
+db.transactions.aggregate([
+  { $group: {
+    _id: "$bank",
+    totalBanco: { $sum: 1 },
+    valorTotal: { $sum: "$value" }
+  }},
+  { $match: {
+    valorTotal: { $gt: 1000 }
+  }}
+])
+// Selecione os bancos que têm o valor total de transações maior que 1000.

@@ -1,6 +1,28 @@
 use("test")
 db.articles.find(
-  {score: {$gt: 50, $lt: 80}}
+  {author: "dave"}
 );
 
+use("test")
+db.articles.aggregate(
+  [{ $match: { author: "dave" } }]
+);
+
+db.articles.find(
+  { $or: [
+    { score: { $gt: 70, $lt: 90 } },
+      { views: { $gte: 1000 } },
+  ]}
+)
+
+db.articles.aggregate(
+  [{ $match: {
+    $or: [
+      { score: { $gt: 70, $lt: 90 } },
+      { views: { $gte: 1000 } },
+    ]
+  }}]
+);
+
+use("test")
 db.articles.find()
