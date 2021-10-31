@@ -34,6 +34,12 @@ app.get('/drinks/search', function(req, res) {
   res.status(200).json(filterDrinks);
 });
 
+app.post('/drinks', (req, res) => {
+  const { name } = req.body;
+  drinks.push({ name });
+  res.status(201).json({ message: `bebida ${name} adicionada com sucesso!` })
+});
+
 app.get('/drinks/:id', function(req, res) {
   const { id } = req.params;
   const drink = drinks.find((d) => d.id === parseInt(id));
@@ -49,33 +55,23 @@ app.get('/recipes', function (_req, res) {
   res.json(recipes);
 });
 
-app.listen(3001, () => {
-  console.log('Aplicação ouvindo na porta 3001');
+app.post('/recipes', function (req, res) {
+  const { id, name, price, waitTime } = req.body;
+  recipes.push({ id, name, price, waitTime});
+  res.status(201).json({ message: 'Recipe created successfully!'});
 });
 
-fetch('http://localhost:3001/recipes/', {
-  method: 'POST',
-  headers: {
-    accept: 'application/json',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    id: 4,
-    name: 'Macarrão com frango',
-    price: 30,
-  })
-})
-
-app.post('/recipes', function (req, res) {
-  const { id, name, price } = req.body;
-  recipes.push({ id, name, price});
-  res.status(201).json({ message: 'Recipe created successfully!'});
+app.get('/validateToken', function(req, res) {
+  const token = req.headers.authorization;
+  if(token.length != 16) return res.status(401).json({ message: `Token inválido` });
+  
+  res.status(200).json({ message: `Token válido!` });
 });
 
 app.get('/recipes/search', function(req, res) {
   const { name, maxPrice } = req.query;
   const filterRecipes = recipes.filter((r) => r.name.includes(name) && r.price < parseInt(maxPrice));
-  res.status(200).json(filterRecipes);
+  res.status(200).json(filterRecipes); // javascript para json
 });
 
 app.get('/recipes/:idParamtro', function (req, res) {
@@ -86,3 +82,47 @@ app.get('/recipes/:idParamtro', function (req, res) {
 
   res.status(200).json(recipe); // o que esse .json faz? ele transforma o json em javascript na tela?
 });
+
+app.put('/recipes/:id', (req, res) => {
+  const { id } = req.params;
+  const { name, price } = req.body;
+  const recipeIndex = recipes.findIndex((recipe) => recipe.id === parseInt(id));
+
+  if(recipeIndex === -1) return res.status(404).json({ message: 'id não encontrado'});
+
+  recipes[recipeIndex] = { ...recipes[recipeIndex], name, price }
+  res.status(204).end();
+});
+
+app.delete('/recipes/:id', function (req, res) {
+  const { id } = req.params;
+  const recipeIndex = recipes.findIndex((r) => r.id === parseInt(id));
+
+  if (recipeIndex === -1) return res.status(404).json({ message: 'Recipe not found!' });
+
+  recipes.splice(recipeIndex, 1);
+
+  res.status(204).end();
+});
+
+app.all('*', (req, res) => {
+  return res.status(404).json({ message: `Rota ${req.path} não encontrada!`})
+});
+
+app.listen(3000, () => {
+  console.log('Aplicação ouvindo na porta 3000');
+});
+
+
+// fetch(`http://localhost:3001/recipes/`, {
+//   method: 'POST',
+//   headers: {
+//     Accept: 'application/json',
+//     'Content-Type': 'application/json',
+//   },
+//   body: JSON.stringify({ // javascript para json
+//     id: 4,
+//     name: 'Macarrão com Frango',
+//     price: 30
+//   })
+// });
