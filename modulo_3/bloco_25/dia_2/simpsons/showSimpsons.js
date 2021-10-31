@@ -1,0 +1,11 @@
+// Crie uma função que leia todos os dados do arquivo e imprima cada personagem no formato id - Nome . Por exemplo: 1 - Homer Simpson .
+const fs = require('fs').promises;
+
+async function showSimpsons() {
+  const readFile = await fs.readFile('./simpsons.json');
+  const data = await JSON.parse(readFile);
+  const characters = data.map(({ id, name }) => `${id} - ${name}`);
+  characters.forEach((character) => console.log(character))
+}
+
+showSimpsons();
