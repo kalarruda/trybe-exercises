@@ -2,7 +2,10 @@ const express = require('express');
 const app = express();
 const getSimpsons = require('./middlewares/getSimpsons');
 const findSimpsons = require('./middlewares/findCharacter');
+const filterSimpson = require('./middlewares/filterSimpsons');
 
+
+app.get('/simpsons/filter', filterSimpson);
 app.get('/simpsons', getSimpsons);
 app.get('/simpsons/:id', findSimpsons);
 

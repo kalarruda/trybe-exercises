@@ -4,8 +4,8 @@ const fs = require('fs').promises;
 async function getSimpsons(_req, res){
   const readFile = await fs.readFile('./simpsons.json');
   const data = await JSON.parse(readFile);
-  const characters = data.map(({ id, name }) => `${id} - ${name}`);
-  return res.status(200).json(`${characters}`);
+  // const characters = data.map(({ id, name }) => `${id} - ${name}`);
+  return res.status(200).json(data);
 };
 
 module.exports = getSimpsons;
