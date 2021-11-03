@@ -1,28 +1,34 @@
 /* index.js */
 const express = require('express');
 const rescue = require('express-rescue');
-const errorMiddleware = require('./errorMiddleware');
+// const errorMiddleware = require('./errorMiddleware');
+const recipesRouter = require('./recipesRouter');
 
 const app = express();
 
-app.get('/:fileName', [
-  rescue(async (req, res) => {
-    const file = await fs.readFile(`./${req.params.fileName}`);
-    res.send(file.toString('utf-8'));
-  }),
-  (err, req, res, next) => {
-    if (err.code === 'ENOENT') {
-      const newError = new Error(err.message);
-      newError.code = 'file_not_found';
-      newError.status = 404;
-      return next(newError);
-    }
+app.use('/recipes', recipesRouter);
 
-    return next(err);
-  },
-]);
+app.listen(3000, () => { console.log('Ouvindo na porta 3000'); });
 
-app.use(errorMiddleware);
+
+// app.get('/:fileName', [
+//   rescue(async (req, res) => {
+//     const file = await fs.readFile(`./${req.params.fileName}`);
+//     res.send(file.toString('utf-8'));
+//   }),
+//   (err, req, res, next) => {
+//     if (err.code === 'ENOENT') {
+//       const newError = new Error(err.message);
+//       newError.code = 'file_not_found';
+//       newError.status = 404;
+//       return next(newError);
+//     }
+
+//     return next(err);
+//   },
+// ]);
+
+// app.use(errorMiddleware);
 
 
 // const express = require('express');
@@ -51,5 +57,3 @@ app.use(errorMiddleware);
 // // app.all('*', function (req, res) {
 // //  return res.status(404).json({ message: `Rota '${req.path}' não existe!`});
 // // });
-
-// app.listen(3000, () => { console.log('Ouvindo na porta 3000'); });

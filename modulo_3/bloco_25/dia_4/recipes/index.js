@@ -24,8 +24,20 @@ const drinks = [
 
 // ======== drink ===================================================
 
+// app.get('/drinks', function(_req, res) {
+//   const alphabeticOrder = drinks.map(({ name }).sort((a, b) => b > a));
+//   return res.send(alphabeticOrder);
+// });
+
+function ordenar(a, b) {
+  return a.name > b.name;
+}
+// console.log(drinks.sort(ordenar))
+// não consegui usar o localCompare
+
 app.get('/drinks', function(_req, res) {
-  res.json(drinks);
+  const alphabeticOrder = drinks.sort(ordenar);
+  return res.send(alphabeticOrder);
 });
 
 app.get('/drinks/search', function(req, res) {
