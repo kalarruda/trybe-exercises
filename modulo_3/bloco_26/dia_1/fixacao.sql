@@ -20,3 +20,20 @@ VALUES ('George','R. R.','Martin','1948-09-20','norte-americano'),
     ('Frank',NULL,'Herbert','1920-02-11','norte-americano'),
     ('Júlio',NULL,'Verne','1905-03-24','francês');
     
+CREATE TABLE books
+(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(90) NOT NULL,
+    author_id INT(11) NOT NULL,
+    FOREIGN KEY (author_id) REFERENCES authors(id),
+)
+
+
+
+
+
+
+
+
+
+

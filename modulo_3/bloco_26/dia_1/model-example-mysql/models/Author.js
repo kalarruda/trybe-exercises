@@ -1,52 +1,49 @@
-// models/Author.js
-
-// const connection = require('./connection');
-
-// // Cria uma string com o nome completo do autor
-
-// const getNewAuthor = (authorData) => {
-// const { id, firstName, middleName, lastName } = authorData;
-
-// const fullName = [firstName, middleName, lastName]
-//     .filter((name) => name)
-//     .join(' ');
-
-// return {
-//     id,
-//     firstName,
-//     middleName,
-//     lastName,
-//     name: fullName,
-// };
-// };
-
-// // Converte o nome dos campos de snake_case para camelCase
-
-// const serialize = (authorData) => ({
-//     id: authorData.id,
-//     firstName: authorData.first_name,
-//     middleName: authorData.middle_name,
-//     lastName: authorData.last_name});
-
-// // Busca todos os autores do banco.
-
-// const getAll = async () => {
-//     const [authors] = await connection.execute(
-//         'SELECT id, first_name, middle_name, last_name FROM model_example.authors;',
-//     );
-//     return authors.map(serialize).map(getNewAuthor);
-// };
-
-// module.exports = {
-//     getAll,
-// };
-
 const connection = require('./connection');
 
-const getAll = async () => {
-  const result = await connection.execute('SELECT id, first_name, middle_name, last_name FROM authors');
+const getNewAuthor = ({ id, PrimeiroNome, NomeDoMeio, Sobrenome }) => {
+  const NomeCompleto = [PrimeiroNome, NomeDoMeio, Sobrenome].filter((algo) => algo).join(' ');
+  // O FILTER AQUI IGNORA O NULL, LOGO SE O NOMEDOMEIO TIVER NULL NÃO APARECE
+  return {
+    id,
+    PrimeiroNome,
+    NomeDoMeio,
+    Sobrenome,
+    NomeCompleto,
+  }
+}
+const serialize = (authorData) => {
+  return {
+    id: authorData.id,
+    PrimeiroNome: authorData.first_name,
+    NomeDoMeio: authorData.middle_name,
+    Sobrenome: authorData.last_name,
+  }
+}
 
-  return result;
+const getAll = async () => {
+  const [result] = await connection.execute('SELECT id, first_name, middle_name, last_name FROM authors');
+//  NÃO ENTENDI PORQUE USANDO COLCHETES DESESTRUTURA SÓ O PRIMEIRO
+  return result.map(serialize).map(getNewAuthor);
 };
 
-module.exports = { getAll };
+const findById = async (id) => {
+  const [authorId] = await connection.execute('SELECT id, first_name, middle_name, last_name FROM authors WHERE id=?', [id]);
+  
+  if(authorId.length === 0) {
+    return null; // SE O RESULTADO DA PESQUISA NÃO RETORNAR E VIER UM LENGHT ZERO ENTÃO LÓGICAMENTE NÃO EXISTE ESSE ID
+  }
+  const { PrimeiroNome, NomeDoMeio, Sobrenome, NomeCompleto } = authorId.map(serialize)[0];
+  return getNewAuthor({
+    id,
+    PrimeiroNome,
+    NomeDoMeio,
+    Sobrenome,
+    NomeCompleto,
+  })
+}
+
+
+module.exports = {
+  getAll,
+  findById,
+};
