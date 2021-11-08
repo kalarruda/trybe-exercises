@@ -1,5 +1,5 @@
-const Author = require('./Author');
-const connection = require('./connectionMysql');
+const Author = require('./Authors');
+const connection = require('./connection');
 
 const serialize = (books) => {
   return {
@@ -9,28 +9,33 @@ const serialize = (books) => {
   }
 }
 
-const getAllBooks = async () => {
-  const [result] = await connection.execute('SELECT * FROM books');
+const getAllBooks = async () => connection()
+    .then((db) => db.collection('books').find({}).toArray());
 
-  return result.map(serialize);
-}
+// const getAllBooks = async () => {
+//   const connect = await connection();
+//   const result = connect.collection('books').find().toArray();
+//   const list = result.map(({ _id, title, author_id }) => ({
+//     id: _id,
+//     titulo: title,
+//     AutorId: author_id,
+//   }))
+//   return list;
+// }
 
-const getByAuthorId = async (id) => {
-  const [authorId] = await connection.execute('SELECT * FROM books WHERE author_id=?', [id]);
-  if(authorId.lenght === 0) return null;
-  return authorId.map(serialize); // SÓ VAI VIR UM LIVRO DESSE AUTOR SE COLOCAR [0]
-}
+const getByAuthorId = async (authorID) => connection()
+  .then((db) => db.collection('books').find({ author_id: Number(authorID) }).toArray());
 
-const isValid = async (titulo, autorId) => {
-  if(!titulo || titulo.length < 3 || typeof titulo !== 'string') return false;
+const isValid = async (title, autorId) => {
+  if(!title || title.length < 3 || typeof title !== 'string') return false;
   if(!autorId || typeof autorId !== 'number' || !(await Author.findById(autorId))) return false; // PUXOU FUNÇÃO DE AUTHOR
 
   return true;
 }
 
-const createBook = async (titulo, autorId) => connection.execute(
+const createBook = async (title, autorId) => connection.execute(
   'INSERT INTO model_example.books (title, author_id) VALUES (?,?)',
-  [titulo, autorId],
+  [title, autorId],
   );
 
 module.exports = {

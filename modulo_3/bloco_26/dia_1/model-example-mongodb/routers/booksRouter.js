@@ -2,7 +2,7 @@
 // const router = express.Router(); // OU PODE USAR ESSA CHAMADA DE BAIXO
 const router = require('express').Router();
 const Books = require('../models/Books');
-const Author = require('../models/Author');
+const Author = require('../models/Authors');
 
 router.post('/', async (req, res) => {
   const { titulo, autorId } = req.body;
