@@ -11,7 +11,14 @@ const createSongServices = async ({ name, album }) => {
   return await Songs.create({ name, album });
 }
 
+const deleteSongService = async ({ name }) => {
+  const songExist = await Songs.songExist({ name });
+  if(!songExist) return { error: 'MUSIC_DOENST_EXISTS' };
+  return await Songs.deleteSong({ name });
+}
+
 module.exports = {
   getAllServices,
   createSongServices,
+  deleteSongService,
 }

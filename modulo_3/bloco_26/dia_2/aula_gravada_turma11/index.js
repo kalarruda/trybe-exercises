@@ -7,6 +7,8 @@ app.use(bodyparser.json()); // PRECISA PARA PODER USAR MÉTODO POST
 
 app.get('/songs', songsController.getAllSongs);
 app.post('/songs', songsController.createSong);
+app.get('/deleteSong', songsController.deleteSong);
+
 
 const PORT = 3000;
 

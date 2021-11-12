@@ -6,6 +6,12 @@ const songExist = async ({ name }) => {
   return song !== null;
 }
 
+const deleteSong = async ({ name }) => {
+  const db = await connection();
+  return db.collection('songs').deleteOne({ name });
+}
+
+
 const getAll = async () => {
   const db = await connection();
   return db.collection('songs').find().toArray();
@@ -21,4 +27,5 @@ module.exports = {
   getAll,
   create,
   songExist,
+  deleteSong,
 }
