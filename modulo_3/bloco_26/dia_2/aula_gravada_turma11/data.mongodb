@@ -1,0 +1,28 @@
+use('musicClass');
+
+db.songs.insertMany([
+  {
+    name: 'Carry On',
+    album: 'Reaching the sun',
+  },
+  {
+    name: 'Hello There',
+    album: 'Bests from ObiWan',
+  },
+  {
+    name: 'I dont known nothing',
+    album: 'Best from Jhon Snow',
+  },
+  {
+    name: 'Puts ferrou',
+    album: 'Cade meu carro',
+  },
+  {
+    name: 'Heart go on',
+    album: 'Titanic',
+  },
+  {
+    name: 'Robocop gay',
+    album: 'Mamonas Assassinas',
+  }
+])
