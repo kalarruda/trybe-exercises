@@ -1,0 +1,44 @@
+use('rest_aula');
+
+db.people.insertMany([
+  {
+    name: "Marcos",
+    age: 32
+  },
+  {
+    name: "Eduardo",
+    age: 7
+  },
+  {
+    name: "Giselle",
+    age: 37
+  },
+  {
+    name: "Jose",
+    age: 38
+  },
+  {
+    name: "Desirrê",
+    age: 39
+  },
+  {
+    name: "Isadora",
+    age: 9
+  },
+  {
+    name: "João",
+    age: 23
+  },
+  {
+    name: "Sheila",
+    age: 18
+  },
+  {
+    name: "Natalia",
+    age: 58
+  },
+  {
+    name: "Mauro",
+    age: 10
+  },
+])
