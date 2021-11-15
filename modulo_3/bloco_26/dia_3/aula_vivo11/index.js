@@ -5,8 +5,7 @@ const controllers = require('./controllers/peopleController');
 
 app.use(bodyParser.json());
 
-app.get('/pessoas', controllers.getAll)
-// app.post('/pessoas/:id')
+app.use('/', controllers);
 
 const PORT = 3001;
 
