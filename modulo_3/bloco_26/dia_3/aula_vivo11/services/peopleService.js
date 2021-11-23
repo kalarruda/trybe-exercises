@@ -1,5 +1,5 @@
-const { ObjectId } = require('bson');
 const People = require('../models/peopleModel');
+const { ObjectId } = require('mongodb');
 
 const getAll = async () => {
   return await People.getAll();
