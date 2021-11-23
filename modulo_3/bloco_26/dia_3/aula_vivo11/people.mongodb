@@ -1,10 +1,4 @@
-use('rest_aula');
 
-db.people.insertMany([
-  {
-    name: "Marcos",
-    age: 32
-  },
   {
     name: "Eduardo",
     age: 7
