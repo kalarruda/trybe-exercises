@@ -2,7 +2,7 @@
   "development": {
     "username": "kalarruda",
     "password": "josecarlos",
-    "database": "teste_exercicio",
+    "database": "orm_example",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
