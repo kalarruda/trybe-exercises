@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { User } = require('../models');
+const { User, Product } = require('../models');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
@@ -24,12 +24,17 @@ router.get('/', async (_req, res) => {
 
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
+  const { includeProduct } = req.query
   try {
     const user = await User.findByPk(id);
 
     if (!user) return res.status(404).json({ message: 'usuário naõ existe' });
 
-    return res.status(200).json(user);
+    if (!includeProduct) return res.status(200).json(user);
+
+    const products = await Product.findAll({ where: { userId: id } })
+    return res.status(200).json({ user, products })
+
   } catch (e) {
     return res.status(500).json({ message: 'erro ao encontrar usuário' });
   }
