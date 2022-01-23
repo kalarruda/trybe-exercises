@@ -6,7 +6,7 @@ const getNewAuthor = (authorData) => {
 const { id, firstName, middleName, lastName } = authorData;
 
 const fullName = [firstName, middleName, lastName].filter((name) => name).join(' ');
-// o filter é para testar se tem o "middleName", "lastName" e/ou "firsName" mesmo se não tiver ele faz o join
+// o filter nesse caso é usado para juntar o que tiver lá dentro seja somente o firstName, middleName ou  lastName 
 
 return {
   id,
