@@ -6,7 +6,7 @@ const productController = require('./controllers/productController');
 const sellsOffController = require('./controllers/sellsOffController');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3005;
 
 app.use(bodyparser.json());
 
