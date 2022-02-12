@@ -1,6 +1,3 @@
-import re
-
-
 nome_input = input("Digite um nome: ")
 
 for retira_letra in range(len(nome_input)):
