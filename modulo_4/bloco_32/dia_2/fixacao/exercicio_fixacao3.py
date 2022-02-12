@@ -14,9 +14,13 @@ for estudantes_e_notas in info_estudantes:
         print(linhas[0])
         estudantes_reprovados.append(linhas[0] + "\n")
 
+info_estudantes.close()
+
 arquivo_dos_reprovados = open('reprovados.txt', mode='w')
 
 arquivo_dos_reprovados.writelines(f"{estudantes_reprovados}\n")
+
+arquivo_dos_reprovados.close()
 
 # for nota in info_estudantes:
 #     print(nota.split(" "))
