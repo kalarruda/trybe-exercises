@@ -12,13 +12,13 @@ def teste_estado_da_jogada():
 @patch('jogo_boliche.jogadas.randint')
 # retorna um numero aleatorio o randint
 def teste_jogada_regular(randint_mockado):
-    randint_mockado.return_value = 3
+    randint_mockado.return_value = 1
     # esta mockando (simulando) receber o valor 1
     jogada = Jogada()
     jogada.jogando()
 
-    assert jogada.primeira_tentativa == 3
-    assert jogada.segunda_tentativa == 3
+    assert jogada.primeira_tentativa == 1
+    assert jogada.segunda_tentativa == 1
     assert jogada.tipo == TiposJogada.REGULAR
 
 
