@@ -24,3 +24,6 @@ for produto in seletor.css(".product_pod"):
     title = produto.css("h3 a::attr(title)").get()
     preco = produto.css(".price_color::text").get()
     print(title, preco)
+
+proxima_pagina = seletor.css('.next a::attr(href)').get()
+print(proxima_pagina)
