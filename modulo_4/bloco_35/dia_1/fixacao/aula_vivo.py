@@ -1,5 +1,6 @@
 def mais_que_vinte_cinco_porcento(array):
-    vinte_cinco_porcento = len(array)
+    vinte_cinco_porcento = len(array) // 4
+    # o numero é dividido por 4 mas so sobra numero inteiro
     setenta_cinco_porcento = len(array) - vinte_cinco_porcento
     for index, elemento in enumerate(array[:setenta_cinco_porcento]):
         if elemento == array[index + vinte_cinco_porcento]:
