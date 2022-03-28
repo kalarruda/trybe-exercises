@@ -1,6 +1,7 @@
 """Perceba que temos uma coleção de valores
 e operações que atuam sobre estes valores,
 de acordo com o que foi definido pelo TAD."""
+import sys
 
 
 class Array:
@@ -42,3 +43,7 @@ while index < len(array):
     # recupera o elemento através de um índice
     print("Index:", index, ", Nome:", array.get(index))
     index += 1
+
+# sys.getsizeof retorna o tamanho da lista em bytes
+array_memory_size = sys.getsizeof(array.data)
+print(f"Tamanho da memória: {array_memory_size}")
