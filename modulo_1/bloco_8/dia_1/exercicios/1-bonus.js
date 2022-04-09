@@ -58,7 +58,7 @@ const warriorAttack = (warriorPlayer) => {
 //   for (let mana = magePlayer.mana; mana > 15; mana -= 15) {
 //     if (mana > 15) {
 //       mana -= 15;
-//       return { damage: mageDamage, manaSpend: 15, mana };      
+//       return { damage: mageDamage, manaSpend: 15, mana };
 //     }
 //     return `Não possui mana suficiente`;
 //   }

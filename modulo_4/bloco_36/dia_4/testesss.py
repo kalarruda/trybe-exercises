@@ -238,7 +238,7 @@ print(get_busiest_day(lista2))
 #     file_info = range(len(path_to_file))
 #     count = int(0)
 #     for order in file_info:
-#         if file_info[order][0] == 
+#         if file_info[order][0] ==
 # "arnaldo" and file_info[order][1] == "hamburguer":
 #             count += 1
 #     return count
